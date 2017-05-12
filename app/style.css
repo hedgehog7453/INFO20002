@@ -1,0 +1,31 @@
+#bg-img {
+    background-image: url("assets/nabeel-syed-2856.jpg");
+    background-size: cover;
+    background-color: hsla(0,0%,100%,0.3);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;  
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 58px;
+    color: #0a2247;
+}
+
+.container {
+    padding-top: 175px;
+}
+
+.btn {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Muli'
+}
