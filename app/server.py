@@ -2,6 +2,26 @@ from flask import Flask
 import csv
 app = Flask(__name__, static_folder='.', static_url_path='')
 
+def htmlTemplate(body):
+    return """
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Project Phase 3</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="loader"></div>
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+    """ + body + """
+    </body>
+</html>
+    """
 
 @app.route("/")
 def root():
@@ -17,44 +37,19 @@ def rawData():
         data.append(row)
     f.close()
 
-    html = """
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Project Phase 3</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script type="text/javascript">
-            $(window).load(function() {
-                $(".loader").fadeOut("slow");
-            });
-        </script>
-    </head>
-    <body>
-        <div class="loader"></div>
-        <table class="table table-bordered table-condensed">
-            <thead>
-                <tr>
-    """
+    htmlBody = ""
     
     for attr in data[0]:
-        html += "<th>"+attr+"</th>"
-    html += "</tr>"
+        htmlBody += "<th>"+attr+"</th>"
+    htmlBody += "</tr>"
 
     for i in range(1,len(data)):
-        html += "<tr>"
+        htmlBody += "<tr>"
         for cell in data[i]:
-            html += "<td>"+cell+"</td>"
-        html += '</tr>'
+            htmlBody += "<td>"+cell+"</td>"
+        htmlBody += '</tr>'
 
-    html += """
-    </body>
-    
-</html>
-    """
-    return html
+    return htmlTemplate(htmlBody)
 
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
