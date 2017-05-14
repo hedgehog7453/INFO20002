@@ -2,7 +2,7 @@ from flask import Flask
 import csv
 app = Flask(__name__, static_folder='.', static_url_path='')
 
-def htmlTemplate(title, body):
+def htmlTemplate(title, body, header=""):
     return """
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,8 @@ def htmlTemplate(title, body):
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        """ + header + """
     </head>
     <body>
     """ + body + """
@@ -32,8 +33,10 @@ def rawData():
     for row in csvreader:
         data.append(row)
     f.close()
-    # Generate HTML
-    htmlBody = """<table class="table table-bordered table-condensed"><tr>"""
+    # Generate HTML body
+    htmlBody = """<div class="loader"></div>
+    <table class="table table-bordered table-condensed">
+    <tr>"""
     for attr in data[0]:
         htmlBody += "<th>"+attr+"</th>"
     htmlBody += "</tr>"
@@ -42,7 +45,13 @@ def rawData():
         for cell in data[i]:
             htmlBody += "<td>"+cell+"</td>"
         htmlBody += '</tr>'
-    return htmlTemplate("Raw Data", htmlBody)
+    # Loader
+    header = """<script type="text/javascript">
+                    $(window).load(function() {
+                        $(".loader").fadeOut("slow");
+                    });
+                </script>"""
+    return htmlTemplate("Raw Data", htmlBody, header)
 
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
