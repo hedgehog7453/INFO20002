@@ -14,9 +14,7 @@ def htmlTemplate(title, body, header=""):
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         """ + header + """
     </head>
-    <body>
     """ + body + """
-    </body>
 </html>
     """
 
@@ -55,8 +53,64 @@ def rawData():
 
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
-    # TODO: Alan
-    return "??"
+    f = open("assets/dataset.csv")
+    csvreader = csv.reader(f, delimiter=',', skipinitialspace=True)
+    data=[]
+    for row in csvreader:
+        data.append(row)
+    f.close()
+    body = """<body id="bg-img2">
+    <h2>Pivot Table Builder</h2>
+    <div class="form-group col-md-6 selector">
+        <label for="sel1">Report Filter</label>
+        <select class="form-control">"""
+    for attr in data[0]:
+        body += "<option>"+attr+"</option>"
+    body +="""
+        </select>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+        <input class="form-control">
+    </div>
+    <div class="form-group col-md-6 selector">
+        <label for="sel1">Row Label</label>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6 selector">
+        <label for="sel1">Column Label</label>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+    </div>
+    <div class="form-group col-md-6 selector">
+        <label for="sel1">Aggregation</label>
+        <select class="form-control">
+            <option>count of</option>
+            <option>sum of</option>
+            <option>average of</option>
+            <option>maximum of</option>
+            <option>minimun of</option>
+        </select>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+        </select>
+    </div>
+</body>"""
+    
+    return htmlTemplate("Pivot Table Builder", body)
 
 @app.route("/pivotTable")
 def pivotTable():

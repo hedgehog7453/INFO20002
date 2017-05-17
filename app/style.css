@@ -1,5 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata);
 #bg-img {
     background-image: url("assets/nabeel-syed-2856.jpg");
+    background-size: cover;
+    background-color: hsla(0,0%,100%,0.3);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;  
+}
+
+#bg-img2{
+    background-image: url("assets/traffic.jpeg");
     background-size: cover;
     background-color: hsla(0,0%,100%,0.3);
     background-blend-mode: overlay;
@@ -15,7 +24,22 @@ h1 {
     line-height: 58px;
     color: #0a2247;
 }
-
+h2{
+    text-align: center;
+    padding-bottom: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 58px;
+    color: #0a2247;
+}
+label{
+    font-family: "Inconsolata", serif;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 58px;
+    color: #193323;
+}
 .container {
     padding-top: 175px;
 }
@@ -39,4 +63,9 @@ h1 {
     z-index: 9999;
     background: url('assets/preloader.gif') 50% 50% no-repeat rgb(249,249,249);
     opacity: .8;
+}
+
+.selector {
+    width: 315px;
+    padding:0px 40px;
 }
