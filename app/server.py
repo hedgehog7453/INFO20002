@@ -53,45 +53,53 @@ def rawData():
 
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
+    #Read cols
     f = open("assets/dataset.csv")
     csvreader = csv.reader(f, delimiter=',', skipinitialspace=True)
     data=[]
     for row in csvreader:
         data.append(row)
     f.close()
+    
     body = """<body id="bg-img2">
     <h2>Pivot Table Builder</h2>
     <div class="form-group col-md-6 selector">
         <label for="sel1">Report Filter</label>
         <select class="form-control">"""
+        
     for attr in data[0]:
         body += "<option>"+attr+"</option>"
+        
     body +="""
         </select>
         <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+            <option>is anything</option>
+            <option>=</option>
+            <option>></option>
+            <option>>=</option>
+            <option><</option>
+            <option><=</option>
+            <option>!=</option>
+            <option>contains</option>
+            <option>doesn't contain</option>
+            <option>is Yes</option>
+            <option>is No</option>
         </select>
         <input class="form-control">
-    </div>
+    </div>  
     <div class="form-group col-md-6 selector">
         <label for="sel1">Row Label</label>
         <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+        <option>is No</option>
         </select>
     </div>
     <div class="form-group col-md-6 selector">
         <label for="sel1">Column Label</label>
-        <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+        <select class="form-control">"""
+    for attr in data[0]:
+        body += "<option>"+attr+"</option>"
+        
+    body +="""
         </select>
     </div>
     <div class="form-group col-md-6 selector">
@@ -103,11 +111,15 @@ def pivotTableBuilder():
             <option>maximum of</option>
             <option>minimun of</option>
         </select>
-        <select class="form-control">
-            <option>1</option>
-            <option>2</option>
+        <select class="form-control">"""
+    for attr in data[0]:
+        body += "<option>"+attr+"</option>"
+    body +="""
         </select>
     </div>
+     <form>
+        <input type="button" class="btn btn-primary" onclick="location.href='/pivotTable';" value="Pivot Table" />
+    </form>>
 </body>"""
     
     return htmlTemplate("Pivot Table Builder", body)
