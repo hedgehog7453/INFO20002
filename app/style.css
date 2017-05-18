@@ -1,13 +1,22 @@
 @import url(http://fonts.googleapis.com/css?family=Inconsolata);
+@import url(https://fonts.googleapis.com/css?family=Muli);
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,700);
+
+body {
+    padding-top: 50px;
+}
+
 #bg-img {
-    background-image: url("assets/nabeel-syed-2856.jpg");
+    background: url("assets/nabeel-syed-2856.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     background-color: hsla(0,0%,100%,0.3);
     background-blend-mode: overlay;
-    background-repeat: no-repeat;  
 }
 
-#bg-img2{
+#bg-img2 {
     background-image: url("assets/traffic.jpeg");
     background-size: cover;
     background-color: hsla(0,0%,100%,0.3);
@@ -17,14 +26,15 @@
 
 h1 {
     text-align: center;
-    padding-bottom: 22px;
+    padding-bottom: 18px;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 44px;
     line-height: 58px;
     color: #0a2247;
 }
-h2{
+
+h2 {
     text-align: center;
     padding-bottom: 22px;
     font-family: 'Roboto', sans-serif;
@@ -33,22 +43,24 @@ h2{
     line-height: 58px;
     color: #0a2247;
 }
-label{
+
+label {
     font-family: "Inconsolata", serif;
     font-weight: 700;
     font-size: 25px;
     line-height: 58px;
     color: #193323;
 }
+
 .container {
-    padding-top: 175px;
+    padding-top: 150px;
 }
 
 .btn {
     display: block;
     margin: 20px auto;
     width: 300px;
-    height: 40px;
+    height: 36px;
     text-align: center;
     border-radius: 5px;
     font-family: 'Muli'

@@ -32,9 +32,10 @@ def rawData():
         data.append(row)
     f.close()
     # Generate HTML body
-    htmlBody = """<div class="loader"></div>
-    <table class="table table-bordered table-condensed">
-    <tr>"""
+    htmlBody = """
+    <div class="loader"></div>
+    <table class="table table-bordered table-condensed table-responsive">
+        <tr>"""
     for attr in data[0]:
         htmlBody += "<th>"+attr+"</th>"
     htmlBody += "</tr>"
