@@ -1,7 +1,7 @@
 import csv
 
-inputfile = open('Traffic_Violations.csv', 'rb')
-#inputfile = open('dataset.csv', 'rb')
+#inputfile = open('Traffic_Violations.csv', 'rb')
+inputfile = open('dataset1.csv', 'rb')
 csvreader = csv.reader(inputfile, delimiter=',', skipinitialspace=True)
 
 # Save all attribute names in a list
@@ -70,31 +70,54 @@ for row in csvreader:
 # attr_new.append(row[14])
 # attr_new.append(row[15])
 
+attr_new = []
+attr_new.append(row[0])
+attr_new.append(row[1])
+attr_new.append(row[4])
+attr_new.append(row[9])
+attr_new.append(row[10])
+attr_new.append(row[13])
+attr_new.append(row[15])
+attr_new.append(row[19])
+attr_new.append(row[20])
+attr_new.append(row[21])
+attr_new.append(row[22])
+attr_new.append(row[23])
+attr_new.append(row[28])
+attr_new.append(row[29])
+attr_new.append(row[34])
+
 
 # Read all data and save them into a list of lists
 data = []
+#states = {}
 for row in csvreader:
-    if (row[18]=="NY"):
-        data.append(row)
-    # data_row = []
-    # data_row.append(row[0])
-    # data_row.append(row[1])
-    # data_row.append(row[2])
-    # data_row.append(row[3])
-    # data_row.append(row[4])
-    # data_row.append(row[5])
-    # data_row.append(row[6])
-    # data_row.append(row[7])
-    # data_row.append(row[9])
-    # data_row.append(row[10])
-    # data_row.append(row[11])
-    # data_row.append(row[12])
-    # data_row.append(row[13])
-    # data_row.append(row[14])
-    # data_row.append(row[15])
-    # data.append(data_row)
+    # if row[18] not in states.keys():
+    #     states[row[18]] = 0
+    # if row[18] in states.keys() and row[10] == "Yes":
+    #     states[row[18]] += 1
+    # if (row[18]=="NY"):
+    #     data.append(row)
+    data_row = []
+    data_row.append(row[0])
+    data_row.append(row[1])
+    data_row.append(row[4])
+    data_row.append(row[9])
+    data_row.append(row[10])
+    data_row.append(row[13])
+    data_row.append(row[15])
+    data_row.append(row[19])
+    data_row.append(row[20])
+    data_row.append(row[21])
+    data_row.append(row[22])
+    data_row.append(row[23])
+    data_row.append(row[28])
+    data_row.append(row[29])
+    data_row.append(row[34])
+    data.append(data_row)
 
 print(len(data))
+# print states
 
 
 # Close the input file
@@ -103,6 +126,6 @@ inputfile.close()
 
 myfile = open("output.csv", 'wb')
 wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-wr.writerow(attributes)
+wr.writerow(attr_new)
 for row in data:
     wr.writerow(row)

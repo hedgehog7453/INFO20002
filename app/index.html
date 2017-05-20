@@ -5,27 +5,27 @@
     <title>Project Phase 3</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body id="bg-img">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">INFO20002</a>
-                <p class="navbar-text">Project Phase 3 - Traffic Violations That Causes Injuries and Fatalities</p>
-            </div>
-        </div>
-    </nav>
     <div class="container">
-        <h1>Traffic Violations That Causes <br>
-        Injuries and Fatalities</h1>
+        <h1>Traffic Violations<br>
+        in New York</h1>
         <form>
-            <input type="button" class="btn btn-primary" onclick="location.href='/rawData';" value="Raw Data" />
-            <input type="button" class="btn btn-primary" onclick="location.href='/pivotTableBuilder';" value="Pivot Table Builder" />
-            <input type="button" class="btn btn-primary" onclick="location.href='/visualisation';" value="Observation" />
+            <a class="btn btn-primary btn-index" onclick="location.href='/rawData';">
+                <i class="fa fa-database" aria-hidden="true"></i> Raw Data
+            </a>
+            <a class="btn btn-primary btn-index" onclick="location.href='/pivotTableBuilder';">
+                <i class="fa fa-table" aria-hidden="true"></i> Pivot Table Builder
+            </a>
+            <a class="btn btn-primary btn-index" onclick="location.href='/visualisation';">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i> Observation
+            </a>
         </form>
     </div>
+
     <!-- JS Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

@@ -1,22 +1,8 @@
 from flask import Flask
 import csv
+from jinja2 import Template
 app = Flask(__name__, static_folder='.', static_url_path='')
 
-def htmlTemplate(title, body, header=""):
-    return """
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>""" + title + """</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-        """ + header + """
-    </head>
-    """ + body + """
-</html>
-    """
 
 @app.route("/")
 def root():
@@ -31,26 +17,14 @@ def rawData():
     for row in csvreader:
         data.append(row)
     f.close()
-    # Generate HTML body
-    htmlBody = """
-    <div class="loader"></div>
-    <table class="table table-bordered table-condensed table-responsive">
-        <tr>"""
-    for attr in data[0]:
-        htmlBody += "<th>"+attr+"</th>"
-    htmlBody += "</tr>"
-    for i in range(1,len(data)):
-        htmlBody += "<tr>"
-        for cell in data[i]:
-            htmlBody += "<td>"+cell+"</td>"
-        htmlBody += '</tr>'
-    # Loader
-    header = """<script type="text/javascript">
-                    $(window).load(function() {
-                        $(".loader").fadeOut("slow");
-                    });
-                </script>"""
-    return htmlTemplate("Raw Data", htmlBody, header)
+
+    # Render data to html template
+    template = Template(open('rawData.html').read())
+    return template.render(
+        data = data,
+        datalen = len(data)
+    )
+
 
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
