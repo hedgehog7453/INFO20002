@@ -31,6 +31,12 @@ h3 {
     font-size: 30px;
 }
 
+h4 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: #0a2247;
+}
+
 .fa {
     padding-right: 7px;
 }
@@ -79,6 +85,12 @@ h3 {
 
 * ******************************/
 
+.table-container {
+    width: 96vw;
+    overflow: scroll;
+    margin: 0px auto;
+}
+
 .btn-back {
     margin-top: 10px;
     margin-left: 10px;
@@ -98,7 +110,6 @@ h3 {
 
 /* Table format */
 table {
-    margin-left: 10px;
     font-family: 'Muli', sans-serif;
 }
 
@@ -165,4 +176,19 @@ label {
 
 .ptbstr {
     font-family: 'Muli'
+}
+
+
+/*******************************
+
+*  Observation Page
+
+* ******************************/
+
+.obs-text {
+    font-family: 'Muli'
+}
+
+.hypo {
+    padding-top: 24px;
 }

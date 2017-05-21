@@ -95,7 +95,10 @@ def pivotTable():
 
 @app.route("/visualisation")
 def visualisation():
-    return ""
+    template = Template(open('observation.html').read())
+    return template.render(
+
+    )
 
 # Run the app
 if __name__ == "__main__":
