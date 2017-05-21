@@ -95,7 +95,7 @@ def pivotTable():
 
 @app.route("/visualisation")
 def visualisation():
-    return
+    return ""
 
 # Run the app
 if __name__ == "__main__":
