@@ -3,31 +3,51 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500,700);
 
 
-h1 {
+/*******************************
+
+*  General css
+
+* ******************************/
+
+h1, h2, h3 {
     text-align: center;
-    padding-bottom: 18px;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    font-size: 44px;
-    line-height: 58px;
     color: #0a2247;
+    line-height: 58px;
+}
+
+h1 {
+    padding-bottom: 18px;
+    font-size: 44px;
 }
 
 h2 {
-    text-align: center;
     padding-bottom: 22px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
     font-size: 38px;
-    line-height: 58px;
-    color: #0a2247;
+}
+
+h3 {
+    font-size: 30px;
 }
 
 .fa {
     padding-right: 7px;
 }
 
-/* Backgroud image of index page */
+.row {
+    width: 80vw;
+    margin: 0px auto;
+    text-align: center;
+}
+
+
+/*******************************
+
+*  Index Page
+
+* ******************************/
+
 #bg-img {
     background: url("assets/nabeel-syed-2856.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -36,19 +56,6 @@ h2 {
     background-size: cover;
     background-color: hsla(0,0%,100%,0.3);
     background-blend-mode: overlay;
-}
-
-/* Background image of ptb page */
-#bg-img2 {
-    background-image: url("assets/traffic.jpeg");
-    background-size: cover;
-    background-color: hsla(0,0%,100%,0.3);
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;  
-}
-
-.container {
-    padding-top: 180px;
 }
 
 .btn-index {
@@ -61,11 +68,23 @@ h2 {
     font-family: 'Muli'
 }
 
-.btn-back {
-    margin: 10px;
+.container {
+    padding-top: 180px;
 }
 
-/* Loader for raw data page */
+
+/*******************************
+
+*  Raw Data Page
+
+* ******************************/
+
+.btn-back {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+/* Loader */
 .loader {
     position: fixed;
     left: 0px;
@@ -76,7 +95,6 @@ h2 {
     background: url('assets/preloader.gif') 50% 50% no-repeat rgb(249,249,249);
     opacity: .8;
 }
-
 
 /* Table format */
 table {
@@ -97,16 +115,43 @@ tr:hover {
     background-color: #e0e0e0;
 }
 
-/* Pivot table builder */
+
+/*******************************
+
+*  Pivot Table Builder Page
+
+* ******************************/
+
+.ptb-container {
+    padding-top: 35px;
+}
+
+#bg-img2 {
+    background: url("assets/traffic.jpeg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: hsla(0,0%,100%,0.5);
+    background-blend-mode: overlay;
+}
+
 label {
     font-family: "Inconsolata", serif;
     font-weight: 700;
     font-size: 25px;
-    line-height: 58px;
     color: #193323;
+    padding-top: 16px;
+    width: 100%;
+    text-align: center;
 }
 
 .selector {
-    width: 315px;
-    padding: 0px 40px;
+    width: 260px;
+    margin: 10px auto;
+}
+
+.btn-submit {
+    width: 35vw;
+    margin-top: 35px;
 }
