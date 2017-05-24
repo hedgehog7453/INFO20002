@@ -11,14 +11,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
-    <style>
-p {
-    border-top-style: dotted;
-    border-right-style: solid;
-    border-bottom-style: dotted;
-    border-left-style: solid;
-}
-</style>
 </head>
 
 <body>
@@ -37,7 +29,7 @@ p {
         <div class="row">
             <h4>Hypothesis 1: More Traffic Violations Due to High Temperature</h4>
             <div class="hypo">
-                <div class="col-md-6">
+                <div class="obstext-container col-md-6">
                     <p class="obs-text">
                         <b>Hypothesis</b>: Traffic violations are more likely to take place when temperature is relatively higher (June, July, Aug). <br><br>
                         <b>Insight</b>: Temperature doesn't affect the number of traffic violations, our assumption was when temperature is higher, people might be more impatient. It seems like low temperature has its disadvantage as well.
@@ -79,7 +71,7 @@ p {
                                 },
                                 series: [{
                                     name: 'No personal injuries',
-                                    data: [268, 318, 332, 318, 303, 234, 298, 295, 277, 323, 355, 247]
+                                    data: [215, 256, 285, 273, 293, 234, 288, 293, 269, 318, 348, 247]
                                 }, {
                                     name: 'Personal injuries involved',
                                     data: [1, 7, 3, 1, 10, 0, 10, 2, 8, 5, 7, 0]
