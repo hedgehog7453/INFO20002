@@ -136,7 +136,7 @@ tr:hover {
 * ******************************/
 
 .ptb-container {
-    padding-top: 8vh;
+    padding-top: 6vh;
 }
 
 #bg-img2 {
@@ -166,7 +166,11 @@ label {
 
 .btn-submit {
     width: 35vw;
-    margin-top: 35px;
+    margin-top: 4vh;
+}
+
+.errmsg {
+    width: 60vw;
 }
 
 

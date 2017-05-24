@@ -49,7 +49,10 @@ def pivotTable():
     # trimmed attribute to original attribute
     t2o = {
         "dateofstop": "Date Of Stop", 
+        "monthofstop": "Month Of Stop",
+        "yearofstop": "Year Of Stop",
         "timeofstop": "Time Of Stop", 
+        "timeperiod": "Time Period",
         "description": "Description", 
         "belts": "Belts", 
         "personalinjury": "Personal Injury", 
@@ -61,8 +64,7 @@ def pivotTable():
         "model": "Model", 
         "color": "Color", 
         "race": "Race", 
-        "gender": "Gender", 
-        "geolocation": "Geolocation"
+        "gender": "Gender"
     }
 
     if filter_val=="":

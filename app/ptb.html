@@ -81,9 +81,9 @@
             </div>
         </div>
 
-        <div class="row errmsg"></div>
+        <div class="row errmsg" id="errmsg"></div>
         <div class="row">
-            <input class="btn btn-primary btn-submit row" type="submit" value="Create Pivot Table" />
+            <input class="btn btn-primary btn-submit" type="submit" value="Create Pivot Table" />
         </div>
     </form>
 </body>
@@ -92,9 +92,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     function checkInput() {
-        if (document.getElementById("row").value=="dateofstop") {
-            alert(":D");
+        if (document.getElementById("row").value==document.getElementById("col").value) {
+            document.getElementById("errmsg").innerHTML = "<div class='alert alert-danger'><strong>Error: </strong>Row and column cannot be the same.</div>";
             return false;
+        }
+        if (document.getElementById("aggregation_attr").value!="yearofstop" &&
+            document.getElementById("aggregation_attr").value!="year") {
+            alert(document.getElementById("aggregation_method").value);
+            if (document.getElementById("aggregation_method").value=="max") {
+                document.getElementById("errmsg").innerHTML = "<div class='alert alert-danger'><strong>Error: </strong>Aggregation method 'maximum' does not apply to non-numeric values.</div>";
+                return false;
+            }
+            if (document.getElementById("aggregation_method").value=="min") {
+                document.getElementById("errmsg").innerHTML = "<div class='alert alert-danger'><strong>Error: </strong>Aggregation method 'minimum' does not apply to non-numeric values.</div>";
+                return false;
+            }
         }
     }
 </script>
