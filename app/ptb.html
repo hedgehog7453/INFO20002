@@ -98,7 +98,6 @@
         }
         if (document.getElementById("aggregation_attr").value!="yearofstop" &&
             document.getElementById("aggregation_attr").value!="year") {
-            alert(document.getElementById("aggregation_method").value);
             if (document.getElementById("aggregation_method").value=="max") {
                 document.getElementById("errmsg").innerHTML = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><strong>Error: </strong>Aggregation method "maximum" does not apply to non-numeric values.</div>';
                 return false;
