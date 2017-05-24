@@ -93,18 +93,18 @@
 <script type="text/javascript">
     function checkInput() {
         if (document.getElementById("row").value==document.getElementById("col").value) {
-            document.getElementById("errmsg").innerHTML = "<div class='alert alert-danger'><strong>Error: </strong>Row and column cannot be the same.</div>";
+            document.getElementById("errmsg").innerHTML = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><strong>Error: </strong>Row and column cannot be the same.</div>';
             return false;
         }
         if (document.getElementById("aggregation_attr").value!="yearofstop" &&
             document.getElementById("aggregation_attr").value!="year") {
             alert(document.getElementById("aggregation_method").value);
             if (document.getElementById("aggregation_method").value=="max") {
-                document.getElementById("errmsg").innerHTML = "<div class='alert alert-danger'><strong>Error: </strong>Aggregation method 'maximum' does not apply to non-numeric values.</div>";
+                document.getElementById("errmsg").innerHTML = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><strong>Error: </strong>Aggregation method "maximum" does not apply to non-numeric values.</div>';
                 return false;
             }
             if (document.getElementById("aggregation_method").value=="min") {
-                document.getElementById("errmsg").innerHTML = "<div class='alert alert-danger'><strong>Error: </strong>Aggregation method 'minimum' does not apply to non-numeric values.</div>";
+                document.getElementById("errmsg").innerHTML = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><strong>Error: </strong>Aggregation method "minimum" does not apply to non-numeric values.</div>';
                 return false;
             }
         }
