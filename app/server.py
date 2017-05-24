@@ -1,5 +1,4 @@
 from flask import Flask, request
-import csv
 from jinja2 import Template
 from ptb import *
 app = Flask(__name__, static_folder='.', static_url_path='')
@@ -12,14 +11,7 @@ def root():
 
 @app.route("/rawData")
 def rawData():
-    # Read data
-    f = open("assets/dataset.csv")
-    csvreader = csv.reader(f, delimiter=',', skipinitialspace=True)
-    data = []
-    for row in csvreader:
-        data.append(row)
-    f.close()
-
+    data = readcsv()
     # Render data to html template
     template = Template(open('rawData.html').read())
     return template.render(
@@ -30,16 +22,9 @@ def rawData():
 
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
-    #Read cols
-    f = open("assets/dataset.csv")
-    csvreader = csv.reader(f, delimiter=',', skipinitialspace=True)
-    attr = []
+    data = readcsv()
+    attr = data[0]
     attr_trimmed = []
-    for row in csvreader:
-        attr = row
-        break
-    f.close()
-    
     for a in attr:
         attr_trimmed.append(a.replace(" ", "").lower())
     # Render data to html template
