@@ -35,6 +35,8 @@ h4 {
     text-align: center;
     font-family: 'Roboto', sans-serif;
     color: #0a2247;
+    font-size: 26px;
+    line-height: 46px;
 }
 
 .fa {
@@ -76,6 +78,7 @@ h4 {
 
 .container {
     padding-top: 180px;
+    /*padding-top: 240px;*/
 }
 
 
@@ -135,6 +138,7 @@ tr:hover {
 
 .ptb-container {
     padding-top: 35px;
+    /*padding-top: 80px;*/
 }
 
 #bg-img2 {
@@ -185,10 +189,21 @@ label {
 
 * ******************************/
 
+.obs-container {
+
+    padding: 20px 0;
+}
+
 .obs-text {
+    text-align: left;
+    padding-left: 30px;
     font-family: 'Muli'
 }
 
 .hypo {
-    padding-top: 24px;
+    padding: 24px 0px;
+}
+
+.intro {
+    font-family: 'Muli'
 }

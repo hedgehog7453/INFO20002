@@ -53,22 +53,22 @@ for row in csvreader:
      34 Geolocation
 '''
 
-# attr_new = []
-# attr_new.append(row[0])
-# attr_new.append(row[1])
-# attr_new.append(row[2])
-# attr_new.append(row[3])
-# attr_new.append(row[4])
-# attr_new.append(row[5])
-# attr_new.append(row[6])
-# attr_new.append(row[7])
-# attr_new.append(row[9])
-# attr_new.append(row[10])
-# attr_new.append(row[11])
-# attr_new.append(row[12])
-# attr_new.append(row[13])
-# attr_new.append(row[14])
-# attr_new.append(row[15])
+attr_new = []
+attr_new.append(row[0])
+attr_new.append(row[1])
+attr_new.append(row[4])
+attr_new.append(row[])
+attr_new.append(row[4])
+attr_new.append(row[5])
+attr_new.append(row[6])
+attr_new.append(row[7])
+attr_new.append(row[9])
+attr_new.append(row[10])
+attr_new.append(row[11])
+attr_new.append(row[12])
+attr_new.append(row[13])
+attr_new.append(row[14])
+attr_new.append(row[15])
 
 
 # Read all data and save them into a list of lists
@@ -76,23 +76,23 @@ data = []
 for row in csvreader:
     if (row[18]=="NY"):
         data.append(row)
-    # data_row = []
-    # data_row.append(row[0])
-    # data_row.append(row[1])
-    # data_row.append(row[2])
-    # data_row.append(row[3])
-    # data_row.append(row[4])
-    # data_row.append(row[5])
-    # data_row.append(row[6])
-    # data_row.append(row[7])
-    # data_row.append(row[9])
-    # data_row.append(row[10])
-    # data_row.append(row[11])
-    # data_row.append(row[12])
-    # data_row.append(row[13])
-    # data_row.append(row[14])
-    # data_row.append(row[15])
-    # data.append(data_row)
+    data_row = []
+    data_row.append(row[0])
+    data_row.append(row[1])
+    data_row.append(row[2])
+    data_row.append(row[3])
+    data_row.append(row[4])
+    data_row.append(row[5])
+    data_row.append(row[6])
+    data_row.append(row[7])
+    data_row.append(row[9])
+    data_row.append(row[10])
+    data_row.append(row[11])
+    data_row.append(row[12])
+    data_row.append(row[13])
+    data_row.append(row[14])
+    data_row.append(row[15])
+    data.append(data_row)
 
 print(len(data))
 
@@ -103,6 +103,6 @@ inputfile.close()
 
 myfile = open("output.csv", 'wb')
 wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-wr.writerow(attributes)
+wr.writerow(attr_new)
 for row in data:
     wr.writerow(row)

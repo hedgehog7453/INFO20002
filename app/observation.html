@@ -7,74 +7,386 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- JS Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
 </head>
 
 <body>
+    <a class="btn btn-info btn-back" onclick="location.href='/';">
+        <i class="fa fa-reply" aria-hidden="true"></i>Back
+    </a>
+    <h2>Observations</h2>
+        
+    <div class="row obs-container">
+        <h4>Introduction</h4>
+        <p class="intro">introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction introduction </p>
+    </div>
+    
+    <!-- Hypothesis 1 -->
     <div class="obs-container">
-        <a class="btn btn-info btn-back" onclick="location.href='/';">
-            <i class="fa fa-reply" aria-hidden="true"></i>Back
-        </a>
-        <h3>Observations</h3>
-
-        <!-- Hypothesis 1 -->
-        <div class="row hypo">
-            <div class="col-md-6">
-                <h4>Hypothesis 1</h4>
-                <p class="obs-text"> blah blah </p>
-            </div>
-            <div class="col-md-6">
-                <img src="assets/nabeel-syed-2856.jpg" height="242" width="300">
+        <div class="row">
+            <h4>Hypothesis 1: More Traffic Violations Due to High Temperature</h4>
+            <div class="hypo">
+                <div class="col-md-6">
+                    <p class="obs-text">
+                        <b>Hypothesis</b>: Traffic violations are more likely to take place when temperature is relatively higher (June, July, Aug). <br><br>
+                        <b>Insight</b>: Temperature doesn't affect the number of traffic violations, our assumption was when temperature is higher, people might be more impatient. It seems like low temperature has its disadvantage as well.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div id="hypo1" style="width:100%; height:400px;"></div>
+                    <script type="text/javascript">
+                        $(function () { 
+                            $('#hypo1').highcharts({
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: 'Traffic Violations vs Month of Stop'
+                                },
+                                subtitle: {
+                                    text: 'Source: data.montgomerycountymd.gov'
+                                },
+                                credits: {
+                                    enabled: false,
+                                },
+                                xAxis: {
+                                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'], 
+                                    crosshair: true
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Number of Violations'
+                                    }
+                                },
+                                tooltip: {
+                                    shared: true,
+                                    useHTML: true,
+                                    headerFormat: '<p>{point.key}</p><table>',
+                                    pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+                                        '<td style="text-align: right">{point.y}</td></tr>',
+                                    footerFormat: '</table>',
+                                },
+                                series: [{
+                                    name: 'No personal injuries',
+                                    data: [268, 318, 332, 318, 303, 234, 298, 295, 277, 323, 355, 247]
+                                }, {
+                                    name: 'Personal injuries involved',
+                                    data: [1, 7, 3, 1, 10, 0, 10, 2, 8, 5, 7, 0]
+                                }]
+                            });
+                        });
+                    </script>
+                </div>
             </div>
         </div>
-
-        <!-- Hypothesis 2 -->
+    </div>
+    
+    <!-- Hypothesis 2 -->
+    <div class="obs-container">
         <div class="row hypo">
-            <div class="col-md-6">
-                <h4>Hypothesis 2</h4>
-                <p class="obs-text"> blah blah </p>
-            </div>
-            <div class="col-md-6">
-                <img src="assets/nabeel-syed-2856.jpg" height="242" width="300">
-            </div>
-        </div>
-
-        <!-- Hypothesis 3 -->
-        <div class="row hypo">
-            <div class="col-md-6">
-                <h4>Hypothesis 3</h4>
-                <p class="obs-text"> blah blah </p>
-            </div>
-            <div class="col-md-6">
-                <img src="assets/nabeel-syed-2856.jpg" height="242" width="300">
-            </div>
-        </div>
-
-        <!-- Hypothesis 4 -->
-        <div class="row hypo">
-            <div class="col-md-6">
-                <h4>Hypothesis 4</h4>
-                <p class="obs-text"> blah blah </p>
-            </div>
-            <div class="col-md-6">
-                <img src="assets/nabeel-syed-2856.jpg" height="242" width="300">
-            </div>
-        </div>
-
-        <!-- Hypothesis 5 -->
-        <div class="row hypo">
-            <div class="col-md-6">
-                <h4>Hypothesis 5</h4>
-                <p class="obs-text"> blah blah </p>
-            </div>
-            <div class="col-md-6">
-                <img src="assets/nabeel-syed-2856.jpg" height="242" width="300">
+            <h4>Hypothesis 2: Ascending Trend of Traffic Violations</h4>
+            <div class="hypo">
+                <div class="col-md-6">
+                    <p class="obs-text">
+                        <b>Hypothesis</b>: Traffic violations tend to increase with the year goes by. <br><br>
+                        <b>Insight</b>: As time goes by, people seem to violate traffic rules more and more, it could be that many people start to drive, there are more new drivers who are not familiar with the road.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div id="hypo2" style="width:100%; height:400px;"></div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#hypo2').highcharts({
+                                legend: {
+                                    enabled: false
+                                },
+                                title: {
+                                    text: 'Number of Traffic Violations from 2012 to 2016',
+                                },
+                                subtitle: {
+                                    text: 'Source: data.montgomerycountymd.gov',
+                                },
+                                credits: {
+                                    enabled: false,
+                                },
+                                xAxis: {
+                                    title: {
+                                        text: 'Year'
+                                    },
+                                    categories: ['2012', '2013', '2014', '2015', '2016']
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Number of Violations'
+                                    },
+                                },
+                                tooltip: {
+                                    shared: true,
+                                    crosshairs: true,
+                                },
+                                series: [{
+                                    name: 'No personal injuries',
+                                    data: [433,538,789,833,726]
+                                }, {
+                                    name: 'Personal injuries involved',
+                                    data: [6,32,1,2,13]
+                                }]
+                            });
+                        });
+                    </script>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- JS Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Hypothesis 3 -->
+    <div class="obs-container">
+        <div class="row hypo">
+            <h4>Hypothesis 3: Gender does not matter</h4>
+            <div class="hypo">
+                <div class="col-md-6">
+                    <p class="obs-text">
+                        <b>Hypothesis</b>: 'Women are bad drivers' stereotype is wrong!<br><br>
+                        <b>Insight</b>: 
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div id="hypo3" style="width:100%; height:400px;"></div>
+                    <script type="text/javascript">
+                        $(function () {
+                            // Build the chart
+                            $('#hypo3').highcharts({
+                                chart: {
+                                    type: 'pie',
+                                    spacingBottom: 50
+                                },
+                                credits: {
+                                    enabled: false,
+                                },
+                                title: {
+                                    text: 'Genders of Traffic Violators'
+                                },
+                                subtitle: {
+                                    text: 'Source: data.montgomerycountymd.gov',
+                                },
+                                tooltip: {
+                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,
+                                        cursor: 'pointer',
+                                        showInLegend: true
+                                    }
+                                },
+                                legend: {
+                                      itemStyle: {
+                                      color: 'gray'
+                                    },
+                                },
+                                series: [{
+                                    name: 'percentage',
+                                    colorByPoint: true,
+                                    data: [{
+                                        name: 'Female',
+                                        y: 1032
+                                    }, {
+                                        name: 'Male',
+                                        y: 2532
+                                    }, {
+                                        name: 'Unknown',
+                                        y: 4
+                                    }]
+                                }]
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hypothesis 4 -->
+    <div class="obs-container">
+        <div class="row hypo">
+            <h4>Hypothesis 4</h4>
+            <div class="hypo">
+                <div class="col-md-6">
+                    <p class="obs-text"> blah blah </p>
+                </div>
+                <div class="col-md-6">
+                    <div id="hypo4" style="width:100%; height:400px;"></div>
+                    <script type="text/javascript">
+                        $(function () {
+                            // Build the chart
+                            $('#hypo4').highcharts({
+                                chart: {
+                                    type: 'area'
+                                },
+                                title: {
+                                    text: 'Traffic Violations at Each Time Period'
+                                },
+                                subtitle: {
+                                    text: 'Source: data.montgomerycountymd.gov',
+                                },
+                                credits: {
+                                    enabled: false,
+                                }, 
+                                xAxis: {
+                                    title: {
+                                        text: 'Time period'
+                                    },
+                                    categories: ['0-1', '1-2', '2-3', '3-4', '4-5', '5-6', '6-7', '7-8', '8-9', '9-10', '10-11', '11-12', '12-13', '13-14', '14-15', '15-16', '16-17', '17-18', '18-19', '19-20', '20-21', '21-22', '22-23', '23-0'],
+                                },
+                                yAxis: {
+                                    title: {
+                                        text: 'Number of Violations'
+                                    },
+                                },
+                                tooltip: {
+                                    shared: true,
+                                    crosshairs: true,
+                                    pointFormat: '{series.name}: {point.y}<br>',
+                                    positioner: function () {
+                                        return { x: 120, y: 80 };
+                                    }
+                                },
+                                plotOptions: {
+                                   
+                                    area: {
+                                        marker: {
+                                            enabled: false,
+                                            symbol: 'circle',
+                                            states: {
+                                                hover: {
+                                                    enabled: true
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    name: 'No personal injuries',
+                                    data: [243, 149, 218, 129, 74, 36, 26, 45, 108, 131, 150, 139, 133, 
+                                        113, 140, 128, 126, 158, 137, 107, 193, 194, 299, 338]
+                                }, {
+                                    name: 'Personal injuries involved',
+                                    data: [0, 0, 0, 0, 10, 1, 7, 0, 5, 9, 0, 2, 0, 1, 0, 1, 0, 0, 0, 9, 0, 0, 9, 0]
+                                }]
+                            })
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hypothesis 5 -->
+    <div class="obs-container">
+        <div class="row hypo">
+            <h4>Hypothesis 5</h4>
+            <div class="hypo">
+                <div class="row">
+                    <p class="obs-text"></p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" id="hypo51" style="width:50%; height:400px;"></div>
+                    <div class="col-md-6" id="hypo52" style="width:50%; height:400px;"></div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#hypo51').highcharts({
+                                chart: {
+                                    type: 'pie',
+                                },
+                                credits: {
+                                    enabled: false,
+                                },
+                                title: {
+                                    text: 'Violation Percentage with vs without Belt'
+                                },
+                                subtitle: {
+                                    text: 'Source: data.montgomerycountymd.gov',
+                                },
+                                tooltip: {
+                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,
+                                        cursor: 'pointer',
+                                        showInLegend: true
+                                    }
+                                },
+                                legend: {
+                                      itemStyle: {
+                                      color: 'gray'
+                                    },
+                                },
+                                series: [{
+                                    name: 'percentage',
+                                    colorByPoint: true,
+                                    data: [{
+                                        name: 'Wearing seatbelt',
+                                        y: 93
+                                    }, {
+                                        name: 'Not wearing seatbelt',
+                                        y: 3421
+                                    }]
+                                }]
+                            });
+                        });
+
+                        $(function () {
+                            $('#hypo52').highcharts({
+                                chart: {
+                                    type: 'pie',
+                                },
+                                credits: {
+                                    enabled: false,
+                                },
+                                title: {
+                                    text: 'Violation Involving Personal Injuries Percentage with vs without Belt'
+                                },
+                                subtitle: {
+                                    text: 'Source: data.montgomerycountymd.gov',
+                                },
+                                tooltip: {
+                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,
+                                        cursor: 'pointer',
+                                        showInLegend: true
+                                    }
+                                },
+                                legend: {
+                                      itemStyle: {
+                                      color: 'gray'
+                                    },
+                                },
+                                series: [{
+                                    name: 'percentage',
+                                    colorByPoint: true,
+                                    data: [{
+                                        name: 'Wearing seatbelt',
+                                        y: 19
+                                    }, {
+                                        name: 'Not Wearing seatbelt',
+                                        y: 35
+                                    }]
+                                }]
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
