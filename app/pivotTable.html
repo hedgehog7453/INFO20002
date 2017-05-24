@@ -3,14 +3,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Pivot Table</title>
+    <title>Raw Data</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <a class="btn btn-info btn-back" onclick="location.href='/pivotTableBuilder';">
+
+    <a class="btn btn-info btn-back" onclick="location.href='/';">
         <i class="fa fa-reply" aria-hidden="true"></i>Back
     </a>
     <h3>Pivot Table</h3>
@@ -18,15 +19,55 @@
         <p class="ptbstr">{{ptb_str}}</p>
     </div>
     <!-- Pivot table -->
+
+
+    
     <table class="table table-bordered table-condensed table-responsive">
         <thead>
+            <tr>
+                <th id="colsp_aggr">{{ val }}</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th id="colsp">{{ column }}</th>
+            </tr>
         </thead>
+        <thead>
+            <tr>
+                <th>{{ row }}</th>
+                {% for j in range(0,col_val_len) %}
+                    <th>
+                        {{ col_val[j][1] }}
+                    </th>
+                {% endfor %}
+            </tr>
+        </thead>
+
         <tbody>
+            {% for i in range(0,row_val_len) %}
+            <tr>
+                <td>
+                    {{ row_val[i] }}
+                </td>
+
+                {% for k in range(0, c) %}
+                <td>
+                    {{ aggr_a_val[i][k] }}
+                </td>
+                {% endfor %}
+
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $('#colsp').attr("colspan",{{col_span}});
+    $('#colsp_aggr').attr("colspan",{{col_span_val}});
+</script>
 
 </html>
