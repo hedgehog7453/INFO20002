@@ -1,6 +1,9 @@
 from flask import Flask, request
 from jinja2 import Template
 from ptb import *
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 app = Flask(__name__, static_folder='.', static_url_path='')
 
 

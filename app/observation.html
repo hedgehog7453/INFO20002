@@ -11,6 +11,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
+    <style>
+p {
+    border-top-style: dotted;
+    border-right-style: solid;
+    border-bottom-style: dotted;
+    border-left-style: solid;
+}
+</style>
 </head>
 
 <body>
@@ -92,8 +100,8 @@
                 <div class="col-md-6">
                     <p class="obs-text">
                         <b>Hypothesis</b>: Traffic violations tend to increase with the year goes by. <br><br>
+                        <b>Plotting</b>: The populatiton in NY since 2012 to 2016 is 8.336, 8.438, 8.491, 8.550 and 8.538 million repectively. We now use the percentage of violation against total population of NY each year, to achieve a more objective view of the trend of violation number.<br><br>
                         <b>Insight</b>: As time goes by, people seem to violate traffic rules more and more, it could be that many people start to drive, there are more new drivers who are not familiar with the road.
-                    </p>
                 </div>
                 <div class="col-md-6">
                     <div id="hypo2" style="width:100%; height:400px;"></div>
@@ -104,7 +112,7 @@
                                     enabled: false
                                 },
                                 title: {
-                                    text: 'Number of Traffic Violations from 2012 to 2016',
+                                    text: 'Population percentage of Violations From 2012 to 2016 (Number Per Million)',
                                 },
                                 subtitle: {
                                     text: 'Source: data.montgomerycountymd.gov',
@@ -120,7 +128,7 @@
                                 },
                                 yAxis: {
                                     title: {
-                                        text: 'Number of Violations'
+                                        text: 'Violation/Injury Number Per Million'
                                     },
                                 },
                                 tooltip: {
@@ -129,10 +137,10 @@
                                 },
                                 series: [{
                                     name: 'No personal injuries',
-                                    data: [433,538,789,833,726]
+                                    data: [51.94,63.75,92.92,97.43,85.03]
                                 }, {
                                     name: 'Personal injuries involved',
-                                    data: [6,32,1,2,13]
+                                    data: [0.72,3.79,0.12,0.23,1.522]
                                 }]
                             });
                         });
@@ -145,12 +153,12 @@
     <!-- Hypothesis 3 -->
     <div class="obs-container">
         <div class="row hypo">
-            <h4>Hypothesis 3: Gender does not matter</h4>
+            <h4>Hypothesis 3: Gender is not a factor of traffic violations</h4>
             <div class="hypo">
                 <div class="col-md-6">
                     <p class="obs-text">
-                        <b>Hypothesis</b>: 'Women are bad drivers' stereotype is wrong!<br><br>
-                        <b>Insight</b>: 
+                        <b>Hypothesis</b>: 'Women are bad drivers' stereotype is actually not true<br><br>
+                        <b>Insight</b>: Some could argue that there is no chart showing whether female have a less percenatge of causing fatality than male, but at least from the violation percentage, it's pretty clear that females, at least in New York, are very concious of the traffic rules.
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -212,10 +220,13 @@
     <!-- Hypothesis 4 -->
     <div class="obs-container">
         <div class="row hypo">
-            <h4>Hypothesis 4</h4>
+            <h4>Hypothesis 4: Violations at night are more likely to lead to injuries</h4>
             <div class="hypo">
                 <div class="col-md-6">
-                    <p class="obs-text"> blah blah </p>
+                    <p class="obs-text"> 
+                    <b>Hypothesis</b>: Traffic violations at night are more likely to cause personal injuriesborder-left-style<br><br>
+                        <b>Insight</b>: Bad lighting conditions at night could affect drivers' sight, which leads to possible violations. We can compare 2 peak hours: 6-7 and 17-18, the second peak hour has a large number of violations but hardly any injuries, while the first peak hour, with not so many violations, however a large number of personal injuries. The only variable between those two peak hours is daylight.
+                     </p>
                 </div>
                 <div class="col-md-6">
                     <div id="hypo4" style="width:100%; height:400px;"></div>
@@ -287,10 +298,13 @@
     <!-- Hypothesis 5 -->
     <div class="obs-container">
         <div class="row hypo">
-            <h4>Hypothesis 5</h4>
+            <h4>Hypothesis 5:  There is a correlation between traffic violations and unfastened seat belts </h4>
             <div class="hypo">
                 <div class="row">
-                    <p class="obs-text"></p>
+                    <p class="obs-text">
+                        <b>Explantion</b>: People who violate traffic rules not because of not wearing seat belt, tend to have their seat belt unfastened<br><br>
+                        <b>Insight</b>: There are 3474 violation cases not caused by not wearing seat belt, it still contains 3381 cases without seat belt fastened. This means if you don't wear your seat belts, you are more likelt to break other traffic rules. People who have a good driving habit, fasten their seat belt every time, they probably are more likely to respect the traffic rules.
+                    </p>
                 </div>
                 <div class="row">
                     <div class="col-md-6" id="hypo51" style="width:50%; height:400px;"></div>
@@ -305,7 +319,7 @@
                                     enabled: false,
                                 },
                                 title: {
-                                    text: 'Violation Percentage with vs without Belt'
+                                    text: 'Violations(not caused by unfastened seatbelt) percentage with vs without Belt'
                                 },
                                 subtitle: {
                                     text: 'Source: data.montgomerycountymd.gov',
@@ -333,7 +347,7 @@
                                         y: 93
                                     }, {
                                         name: 'Not wearing seatbelt',
-                                        y: 3421
+                                        y: 3381
                                     }]
                                 }]
                             });
