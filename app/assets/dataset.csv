@@ -1,4 +1,4 @@
-"Date Of Stop","Month Of Stop","Year Of Stop","Time Of Stop","Time Period","Description","Belts","Personal Injury","Commercial License","Commercial Vehicle","Vehicle Type","Year","Make","Model","Color","Race","Gender"
+"dateofstop","monthofstop","yearofstop","timeofstop","timeperiod","description","belts","personalinjury","commerciallicense","commercialvehicle","vehicletype","year","make","model","color","race","gender"
 "12/08/2016","12","2016","10:25:00","10-11","EXCEEDING MAXIMUM SPEED: 85 MPH IN A POSTED 55 MPH ZONE","No","No","No","No","02 - Automobile","2017","KIA","SORENTO","GRAY","BLACK","F"
 "08/20/2016","08","2016","02:27:00","02-03","DRIVING VEHICLE WHILE UNDER THE INFLUENCE OF ALCOHOL","No","No","No","No","02 - Automobile","2017","HYUNDAI","SONATA","BLUE, DARK","BLACK","F"
 "08/20/2016","08","2016","02:27:00","02-03","DRIVING UNDER THE INFLUENCE OF ALCOHOL PER SE","No","No","No","No","02 - Automobile","2017","HYUNDAI","SONATA","BLUE, DARK","BLACK","F"

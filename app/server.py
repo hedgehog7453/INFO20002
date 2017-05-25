@@ -21,10 +21,11 @@ def root():
 def rawData():
     # Read data
     data = readcsv()
-
     # Render data to html template
     template = Template(open('rawData.html').read())
     return template.render(
+        attr_o = ORIGINAL_COL,
+        attrlen = len(ORIGINAL_COL),
         data = data,
         datalen = len(data)
     )
@@ -32,18 +33,12 @@ def rawData():
 
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
-    # Read attributes
-    data = readcsv()
-    attr = data[0]
-    attr_trimmed = []
-    for a in attr:
-        attr_trimmed.append(a.replace(" ", "").lower())
     # Render data to html template
     template = Template(open('ptb.html').read())
     return template.render(
-        attr = attr, 
-        attr_trimmed = attr_trimmed, 
-        attr_len = len(attr)
+        attr = TRIMMED_COL, 
+        attr_o = ORIGINAL_COL, 
+        attr_len = len(TRIMMED_COL)
     )
 
 
@@ -57,27 +52,6 @@ def pivotTable():
     filter_cond = request.form['filter_cond']
     filter_val = request.form['filter_val']
 
-    # trimmed attribute to original attribute
-    t2o = {
-        "dateofstop": "Date Of Stop", 
-        "monthofstop": "Month Of Stop",
-        "yearofstop": "Year Of Stop",
-        "timeofstop": "Time Of Stop", 
-        "timeperiod": "Time Period",
-        "description": "Description", 
-        "belts": "Belts", 
-        "personalinjury": "Personal Injury", 
-        "commerciallicense": "Commercial License", 
-        "commercialvehicle": "Commercial Vehicle", 
-        "vehicletype": "Vehicle Type", 
-        "year": "Year", 
-        "make": "Make", 
-        "model": "Model", 
-        "color": "Color", 
-        "race": "Race", 
-        "gender": "Gender"
-    }
-
     agg_d = {
         "count": "Count of",
         "max": "Maximum of",
@@ -85,14 +59,14 @@ def pivotTable():
     }
 
     if filter_val=="":
-        ptb_str = 'Row: ' + t2o[str(row)] + '; ' + 'Column: ' + t2o[str(col)] + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o[str(aggr_a)] + '<br>' + 'Filter attribute: ' + t2o[str(filter_a)] + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: none<br>'
+        ptb_str = 'Row: ' + t2o2t(str(row)) + '; ' + 'Column: ' + t2o2t(str(col)) + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o2t(str(aggr_a)) + '<br>' + 'Filter attribute: ' + t2o2t(str(filter_a)) + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: none<br>'
     else:
-        ptb_str = 'Row: ' + t2o[str(row)] + '; ' + 'Column: ' + t2o[str(col)] + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o[str(aggr_a)] + '<br>' + 'Filter attribute: ' + t2o[str(filter_a)] + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: ' + str(filter_val) + '<br>'
+        ptb_str = 'Row: ' + t2o2t(str(row)) + '; ' + 'Column: ' + t2o2t(str(col)) + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o2t(str(aggr_a)) + '<br>' + 'Filter attribute: ' + t2o2t(str(filter_a)) + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: ' + str(filter_val) + '<br>'
     
-    pt = pivot_table_builder_func(t2o[str(row)], t2o[str(col)], aggr_m, t2o[str(aggr_a)])
+    pt = pivot_table_builder_func(str(row), str(col), aggr_m, str(aggr_a), filter_a, filter_cond, filter_val)
     row_val = pt.index.values
     col_val = pt.columns.values
-    aggr_a_val = pt[t2o[str(aggr_a)]].values    
+    aggr_a_val = pt[str(aggr_a)].values    
 
     aggr_a_val_int = []
     aggr_a_val_int_row = []
@@ -108,9 +82,9 @@ def pivotTable():
     template = Template(open('pivotTable.html').read())
     return template.render(
         ptb_str = ptb_str,
-        row = t2o[str(row)],
-        column = t2o[str(col)],
-        val = agg_d[str(aggr_m)]+" "+t2o[str(aggr_a)],
+        row = t2o2t(str(row)),
+        column = t2o2t(str(col)),
+        val = agg_d[str(aggr_m)]+" "+t2o2t(str(aggr_a)),
         row_val = row_val,
         row_val_len = len(row_val),
         col_val = col_val,

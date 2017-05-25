@@ -24,7 +24,7 @@
                 <label for="sel1">Row Label</label>
                 <select class="form-control selector" name="row" id="row">
                     {% for i in range(attr_len) %}
-                    <option value={{attr_trimmed[i]}}>{{attr[i]}}</option>
+                    <option value={{attr[i]}}>{{attr_o[i]}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -33,7 +33,7 @@
                 <label for="sel1">Column Label</label>
                 <select class="form-control selector" name="col" id="col">
                     {% for i in range(attr_len) %}
-                    <option value={{attr_trimmed[i]}}>{{attr[i]}}</option>
+                    <option value={{attr[i]}}>{{attr_o[i]}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -52,7 +52,7 @@
                 </select>
                 <select class="form-control selector" name="aggregation_attr" id="aggregation_attr">
                     {% for i in range(attr_len) %}
-                    <option value={{attr_trimmed[i]}}>{{attr[i]}}</option>
+                    <option value={{attr[i]}}>{{attr_o[i]}}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -61,7 +61,7 @@
                 <label for="sel1">Category Filter</label>
                 <select class="form-control selector" name="filter_attr" id="filter_attr">
                     {% for i in range(attr_len) %}
-                    <option value={{attr_trimmed[i]}}>{{attr[i]}}</option>
+                    <option value={{attr[i]}}>{{attr_o[i]}}</option>
                     {% endfor %}
                 </select>
                 <select class="form-control selector" name="filter_cond" id="filter_cond">

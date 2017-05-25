@@ -23,23 +23,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Date Of Stop</th>
-                    <th>Month Of Stop</th>
-                    <th>Year Of Stop</th>
-                    <th>Time Of Stop</th>
-                    <th>Time Period</th>
-                    <th style="width: 230px;">Description</th>
-                    <th>Belts</th>
-                    <th>Personal Injury</th>
-                    <th>Commercial License</th>
-                    <th>Commercial Vehicle</th>
-                    <th style="width: 100px;">Vehicle Type</th>
-                    <th>Year</th>
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Color</th>
-                    <th>Race</th>
-                    <th>Gender</th>
+                    {% for i in range(attrlen) %}
+                        <th id={{data[0][i]}}>{{attr_o[i]}}</th>
+                    {% endfor %}
                 </tr>
             </thead>
             <tbody>
@@ -67,13 +53,15 @@
     $(window).load(function() {
         $(".loader").fadeOut("slow");
     });
-</script>
-<script type="text/javascript">
+
     $(document).ready(function(){
         $('#datatable').DataTable({
             "scrollX": true
         });
     });
+
+    document.getElementById("description").style.width = '230px';
+    document.getElementById("vehicletype").style.width = '100px';
 </script>
 
 </html>
