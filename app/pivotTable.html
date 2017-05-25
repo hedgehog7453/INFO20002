@@ -36,9 +36,9 @@
                 <tr>
                     <th>{{ row }}</th>
                     {% for j in range(0,col_val_len) %}
-                        <th>
-                            {{ col_val[j][1] }}
-                        </th>
+                    <th>
+                        {{ col_val[j][1] }}
+                    </th>
                     {% endfor %}
                 </tr>
             </thead>
@@ -48,11 +48,34 @@
                     <td>
                         {{ row_val[i] }}
                     </td>
+                    {% for k in range(0, c) %} 
 
-                    {% for k in range(0, c) %}
-                    <td>
+                    {% if (aggr_a_val[i][k]<5 and aggr_a_val[i][k]>0) %}
+                     <td style="background-color:rgb(242, 184, 199)">
                         {{ aggr_a_val[i][k] }}
                     </td>
+
+                    {% elif (aggr_a_val[i][k]>4 and aggr_a_val[i][k]<10) %}
+                    <td style="background-color:rgb(242, 167, 186)">
+                        {{ aggr_a_val[i][k] }}
+                    </td>
+
+                    {% elif (aggr_a_val[i][k]>9 and aggr_a_val[i][k]<15)%}
+                     <td style="background-color:rgb(244, 75, 118)">
+                        {{ aggr_a_val[i][k] }}
+                    </td>
+
+                    {% elif (aggr_a_val[i][k]>14 and aggr_a_val[i][k]<20)%}
+                     <td style="background-color:rgb(244, 44, 95)">
+                        {{ aggr_a_val[i][k] }}
+                    </td>
+
+                    {% elif (aggr_a_val[i][k]>19)%}
+                     <td style="background-color:rgb(249, 32, 87)">
+                        {{ aggr_a_val[i][k] }}
+                    </td>
+
+                    {% endif %}
                     {% endfor %}
                 </tr>
                 {% endfor %}
@@ -60,14 +83,20 @@
         </table>
     </div>
 </body>
-
 <!-- JS libraries -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <script type="text/javascript">
-    $('#colsp').attr("colspan",{{col_span}});
-    $('#colsp_aggr').attr("colspan",{{col_span_val}});
+$('#colsp').attr("colspan", {
+    {
+        col_span
+    }
+});
+$('#colsp_aggr').attr("colspan", {
+    {
+        col_span_val
+    }
+});
 </script>
 
 </html>
