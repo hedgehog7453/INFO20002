@@ -100,7 +100,12 @@ Build the pivot table and return a panda DataFrame object.
 def pivot_table_builder_func(row, col, aggr_m, aggr_a, filter_attr, filter_cond, filter_val):
     odf = pd.read_csv(FILENAME)
     df = filter_df(odf, filter_attr, filter_cond, filter_val)
-    t = pd.pivot_table(df, index = [row], columns = [col], values = [aggr_a], aggfunc={aggr_a:len})
+    if aggr_m == "max":
+        t = pd.pivot_table(df, index = [row], columns = [col], values = [aggr_a], aggfunc={aggr_a:max})
+    elif aggr_m == "min":
+        t = pd.pivot_table(df, index = [row], columns = [col], values = [aggr_a], aggfunc={aggr_a:min})
+    elif aggr_m == "count":
+        t = pd.pivot_table(df, index = [row], columns = [col], values = [aggr_a], aggfunc={aggr_a:len})
 
     return t
 
