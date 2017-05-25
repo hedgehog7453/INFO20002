@@ -195,8 +195,6 @@ label {
     padding: 20px 0;
 }
 
-/*.obstext-container*/
-
 .obs-text {
     text-align: left;
     padding: 30px;
@@ -213,4 +211,5 @@ label {
 
 .intro {
     font-family: 'Muli';
+    text-align: left;
 }

@@ -19,12 +19,13 @@ ORIGINAL_COL = ["Date Of Stop",
                 "Color", 
                 "Race", 
                 "Gender"]
+# Trimmed column names that are used as IDs in html tags
 TRIMMED_COL = map(lambda x: x.replace(" ", "").lower(), ORIGINAL_COL)
 
 
 '''
-Read dataset.csv
-Return a 2D list of data, with the first row as column names. 
+Read dataset.csv and return a 2D list of data, with the first row as column 
+names. 
 '''
 def readcsv():
     f = open(FILENAME)
@@ -37,8 +38,8 @@ def readcsv():
 
 
 '''
-From trimmed column name (or list of column names) to original column name,
-or the other way around
+From trimmed column name (or list of column names) to original column name (or 
+list of original column names), or the other way around. 
 '''
 def t2o2t(attr):
     if type(attr) is list:
@@ -50,7 +51,7 @@ def t2o2t(attr):
 
 
 '''
-Takes a DataFrame object and filter it by the input condition. 
+Take a DataFrame object and filter it by the input condition.
 Return the DataFrame object after filtering. 
 '''
 def filter_df(df, filter_attr, filter_cond, filter_val):
@@ -94,7 +95,7 @@ def filter_df(df, filter_attr, filter_cond, filter_val):
         return df[series]
 
 '''
-
+Build the pivot table and return a panda DataFrame object. 
 '''
 def pivot_table_builder_func(row, col, aggr_m, aggr_a, filter_attr, filter_cond, filter_val):
     odf = pd.read_csv(FILENAME)

@@ -1,9 +1,16 @@
+<!-- 
+Observation page
+This page introduces our hypothesis and insights based on the dataset by data 
+visualisation. 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Observations</title>
+    <!-- Styling -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
@@ -14,14 +21,26 @@
 </head>
 
 <body>
+    <!-- button: back to the upper hierarchy -->
     <a class="btn btn-info btn-back" onclick="location.href='/';">
         <i class="fa fa-reply" aria-hidden="true"></i>Back
     </a>
+
     <h2>Observations</h2>
         
     <div class="row obs-container">
         <h4>Introduction</h4>
-        <p class="intro">We collected the dataset from DataMontgomery website, it contains a large range of attributes, mostly catagorical. Data processing such as error fixing, dataset simplifying is adopted, and 5 hypothesis are analyzed by visualization methods.</p>
+        <p class="obs-text">
+            We collected the dataset from DataMontgomery, a open-source data 
+            website of Montgomery County Government. The dataset contains a 
+            large range of attributes, mostly catagorical. Data processing such 
+            as error fixing, dataset simplifying is adopted for analysis 
+            purpose. Five hypothesis are analyzed by visualization methods.<br><br>
+            To view the raw data, click <a href="/rawData">here</a>. <br>
+            Data source can be accessed 
+            <a href="https://data.montgomerycountymd.gov/Public-Safety/Traffic-Violations/4mse-ku6q">
+            here. </a>
+        </p>
     </div>
     
     <!-- Hypothesis 1 -->
@@ -31,8 +50,13 @@
             <div class="hypo">
                 <div class="obstext-container col-md-6">
                     <p class="obs-text">
-                        <b>Hypothesis</b>: Traffic violations are more likely to take place when temperature is relatively higher (June, July, Aug). <br><br>
-                        <b>Insight</b>: Temperature doesn't affect the number of traffic violations, our assumption was when temperature is higher, people might be more impatient. It seems like low temperature has its disadvantage as well.
+                        <b>Hypothesis</b>: Traffic violations are more likely to 
+                        take place when temperature is relatively higher (June, 
+                        July, Aug). <br><br>
+                        <b>Insight</b>: Temperature doesn't affect the number of 
+                        traffic violations, our assumption was when temperature 
+                        is higher, people might be more impatient. It seems like 
+                        low temperature has its disadvantage as well.
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -53,7 +77,9 @@
                                     enabled: false,
                                 },
                                 xAxis: {
-                                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'], 
+                                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 
+                                                'May', 'Jun', 'Jul', 'Aug', 
+                                                'Sept', 'Oct', 'Nov', 'Dec'], 
                                     crosshair: true
                                 },
                                 yAxis: {
@@ -71,7 +97,8 @@
                                 },
                                 series: [{
                                     name: 'No personal injuries',
-                                    data: [215, 256, 285, 273, 293, 234, 288, 293, 269, 318, 348, 247]
+                                    data: [215, 256, 285, 273, 293, 234, 288, 
+                                            293, 269, 318, 348, 247]
                                 }, {
                                     name: 'Personal injuries involved',
                                     data: [1, 7, 3, 1, 10, 0, 10, 2, 8, 5, 7, 0]
@@ -91,9 +118,17 @@
             <div class="hypo">
                 <div class="col-md-6">
                     <p class="obs-text">
-                        <b>Hypothesis</b>: Traffic violations tend to increase with the year goes by. <br><br>
-                        <b>Plotting</b>: The population in NY since 2012 to 2016 is 8.336, 8.438, 8.491, 8.550 and 8.538 million repectively. We now use the percentage of violation against total population of NY each year, to achieve a more objective view of the trend of violation number.<br><br>
-                        <b>Insight</b>: As time goes by, people seem to violate traffic rules more and more, it could be that many people start to drive, there are more new drivers who are not familiar with the road.
+                        <b>Hypothesis</b>: Traffic violations tend to increase 
+                        with the year goes by. <br><br>
+                        <b>Plotting</b>: The population in NY since 2012 to 2016 
+                        is 8.336, 8.438, 8.491, 8.550 and 8.538 million 
+                        repectively. We now use the percentage of violation 
+                        against total population of NY each year, to achieve a 
+                        more objective view of the trend of violation number.<br><br>
+                        <b>Insight</b>: As time goes by, people seem to violate 
+                        traffic rules more and more, it could be that many 
+                        people start to drive, there are more new drivers who 
+                        are not familiar with the road.
                 </div>
                 <div class="col-md-6">
                     <div id="hypo2" style="width:100%; height:400px;"></div>
@@ -149,8 +184,13 @@
             <div class="hypo">
                 <div class="col-md-6">
                     <p class="obs-text">
-                        <b>Hypothesis</b>: 'Women are bad drivers' stereotype is actually not true.<br><br>
-                        <b>Insight</b>: Some could argue that there is no chart showing whether female have a less percenatge of causing fatality than male, but at least from the violation percentage, it's pretty clear that females, at least in New York, are very concious of the traffic rules.
+                        <b>Hypothesis</b>: 'Women are bad drivers' stereotype is 
+                        actually not true.<br><br>
+                        <b>Insight</b>: Some could argue that there is no chart 
+                        showing whether female have a less percenatge of causing 
+                        fatality than male, but at least from the violation 
+                        percentage, it's pretty clear that females, at least in 
+                        New York, are very concious of the traffic rules.
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -216,8 +256,16 @@
             <div class="hypo">
                 <div class="col-md-6">
                     <p class="obs-text"> 
-                    <b>Hypothesis</b>: Traffic violations at night are more likely to cause personal injuries. <br><br>
-                        <b>Insight</b>: Bad lighting conditions at night could affect drivers' sight, which leads to possible violations. We can compare 2 peak hours: 6-7 and 17-18, the second peak hour has a large number of violations but hardly any injuries, while the first peak hour, with not so many violations, however a large number of personal injuries. The only variable between those two peak hours is daylight.
+                    <b>Hypothesis</b>: Traffic violations at night are more 
+                    likely to cause personal injuries. <br><br>
+                        <b>Insight</b>: Bad lighting conditions at night could 
+                        affect drivers' sight, which leads to possible 
+                        violations. We can compare 2 peak hours: 6-7 and 17-18, 
+                        the second peak hour has a large number of violations 
+                        but hardly any injuries, while the first peak hour, with 
+                        not so many violations, however a large number of 
+                        personal injuries. The only variable between those two 
+                        peak hours is daylight.
                      </p>
                 </div>
                 <div class="col-md-6">
@@ -242,7 +290,13 @@
                                     title: {
                                         text: 'Time period'
                                     },
-                                    categories: ['0-1', '1-2', '2-3', '3-4', '4-5', '5-6', '6-7', '7-8', '8-9', '9-10', '10-11', '11-12', '12-13', '13-14', '14-15', '15-16', '16-17', '17-18', '18-19', '19-20', '20-21', '21-22', '22-23', '23-0'],
+                                    categories: ['0-1', '1-2', '2-3', '3-4', 
+                                                '4-5', '5-6', '6-7', '7-8', 
+                                                '8-9', '9-10', '10-11', '11-12', 
+                                                '12-13', '13-14', '14-15', 
+                                                '15-16', '16-17', '17-18', 
+                                                '18-19', '19-20', '20-21', 
+                                                '21-22', '22-23', '23-0'],
                                 },
                                 yAxis: {
                                     title: {
@@ -273,11 +327,14 @@
                                 },
                                 series: [{
                                     name: 'No personal injuries',
-                                    data: [243, 149, 218, 129, 74, 36, 26, 45, 108, 131, 150, 139, 133, 
-                                        113, 140, 128, 126, 158, 137, 107, 193, 194, 299, 338]
+                                    data: [243, 149, 218, 129, 74, 36, 26, 45, 
+                                            108, 131, 150, 139, 133, 113, 140, 
+                                            128, 126, 158, 137, 107, 193, 194, 
+                                            299, 338]
                                 }, {
                                     name: 'Personal injuries involved',
-                                    data: [0, 0, 0, 0, 10, 1, 7, 0, 5, 9, 0, 2, 0, 1, 0, 1, 0, 0, 0, 9, 0, 0, 9, 0]
+                                    data: [0, 0, 0, 0, 10, 1, 7, 0, 5, 9, 0, 2, 
+                                            0, 1, 0, 1, 0, 0, 0, 9, 0, 0, 9, 0]
                                 }]
                             })
                         });
@@ -290,12 +347,21 @@
     <!-- Hypothesis 5 -->
     <div class="obs-container">
         <div class="row hypo">
-            <h4>Hypothesis 5:  There is a correlation between traffic violations and unfastened seat belts </h4>
+            <h4>Hypothesis 5:  There is a correlation between traffic violations 
+            and unfastened seat belts </h4>
             <div class="hypo">
                 <div class="row">
                     <p class="obs-text">
-                        <b>Explantion</b>: People who violate traffic rules not because of not wearing seat belt, tend to have their seat belt unfastened. <br><br>
-                        <b>Insight</b>: There are 3474 violation cases not caused by not wearing seat belt, it still contains 3381 cases without seat belt fastened. This means people not wearing their seat belts are more likely to break other traffic rules as well. People who have a good driving habit, fasten their seatbelts every time, probably are more likely to respect the traffic rules.
+                        <b>Explantion</b>: People who violate traffic rules not 
+                        because of not wearing seat belt, tend to have their 
+                        seat belt unfastened. <br><br>
+                        <b>Insight</b>: There are 3474 violation cases not 
+                        caused by not wearing seat belt, it still contains 3381 
+                        cases without seat belt fastened. This means people not 
+                        wearing their seat belts are more likely to break other 
+                        traffic rules as well. People who have a good driving 
+                        habit, fasten their seatbelts every time, probably are 
+                        more likely to respect the traffic rules.
                     </p>
                 </div>
                 <div class="row">

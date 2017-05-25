@@ -4,19 +4,17 @@ from jinja2 import Template
 from ptb import *
 import numpy 
 import pandas
-# import sys
-
-# reload(sys)
-# sys.setdefaultencoding('utf8')
 
 app = Flask(__name__, static_folder='.', static_url_path='')
 
 
+# Landing page
 @app.route("/")
 def root():
     return app.send_static_file('index.html')
 
 
+# Raw data page
 @app.route("/rawData")
 def rawData():
     # Read data
@@ -31,6 +29,7 @@ def rawData():
     )
 
 
+# Pivot table builder page
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
     # Render data to html template
@@ -42,8 +41,10 @@ def pivotTableBuilder():
     )
 
 
+# Pivot table page
 @app.route("/pivotTable", methods=['GET', 'POST'])
 def pivotTable():
+    # Acquire the data from pivot table builder page
     row = request.form['row']
     col = request.form['col']
     aggr_m = request.form['aggregation_method']
@@ -52,22 +53,26 @@ def pivotTable():
     filter_cond = request.form['filter_cond']
     filter_val = request.form['filter_val']
 
+    # aggregation method dictionary (for displaing on the webpage)
     agg_d = {
         "count": "Count of",
         "max": "Maximum of",
         "min": "Minimum of"
     }
 
+    # String the indicates the requirement from the selection in pivot table builder
     if filter_val=="":
         ptb_str = 'Row: ' + t2o2t(str(row)) + '; ' + 'Column: ' + t2o2t(str(col)) + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o2t(str(aggr_a)) + '<br>' + 'Filter attribute: ' + t2o2t(str(filter_a)) + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: none<br>'
     else:
         ptb_str = 'Row: ' + t2o2t(str(row)) + '; ' + 'Column: ' + t2o2t(str(col)) + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o2t(str(aggr_a)) + '<br>' + 'Filter attribute: ' + t2o2t(str(filter_a)) + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: ' + str(filter_val) + '<br>'
     
+    # Build the pivot table
     pt = pivot_table_builder_func(str(row), str(col), aggr_m, str(aggr_a), filter_a, filter_cond, filter_val)
     row_val = pt.index.values
     col_val = pt.columns.values
     aggr_a_val = pt[str(aggr_a)].values    
 
+    # Transfer all numbers to integer, and 'nan' to 0
     aggr_a_val_int = []
     aggr_a_val_int_row = []
     for i in aggr_a_val:
@@ -79,6 +84,7 @@ def pivotTable():
         aggr_a_val_int.append(aggr_a_val_int_row)
         aggr_a_val_int_row = []
 
+    # Render data to html template
     template = Template(open('pivotTable.html').read())
     return template.render(
         ptb_str = ptb_str,
@@ -97,10 +103,13 @@ def pivotTable():
     )
 
 
+# Observation page
 @app.route("/visualisation")
 def visualisation():
+    # Render html template
     template = Template(open('observation.html').read())
     return template.render()
+
 
 # Run the app
 if __name__ == "__main__":
