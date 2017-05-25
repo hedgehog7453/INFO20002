@@ -37,7 +37,7 @@ def pivotTableBuilder():
     return template.render(
         attr = TRIMMED_COL, 
         attr_o = ORIGINAL_COL, 
-        attr_len = len(TRIMMED_COL)
+        attr_len = len(ORIGINAL_COL)
     )
 
 

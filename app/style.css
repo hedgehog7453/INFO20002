@@ -91,6 +91,7 @@ h4 {
     width: 80vw;
     overflow: scroll;
     margin: 0px auto;
+    padding-bottom: 200px;
 }
 
 .btn-back {
