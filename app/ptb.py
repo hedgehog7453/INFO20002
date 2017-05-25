@@ -20,7 +20,7 @@ ORIGINAL_COL = ["Date Of Stop",
                 "Race", 
                 "Gender"]
 # Trimmed column names that are used as IDs in html tags
-TRIMMED_COL = map(lambda x: x.replace(" ", "").lower(), ORIGINAL_COL)
+TRIMMED_COL = list(map(lambda x: x.replace(" ", "").lower(), ORIGINAL_COL))
 
 
 '''
