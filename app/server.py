@@ -101,7 +101,7 @@ def pivotTable():
             try:
                 aggr_a_val_int_row.append(int(j))
             except ValueError:
-                aggr_a_val_int_row.append("nan")
+                aggr_a_val_int_row.append(0)
         aggr_a_val_int.append(aggr_a_val_int_row)
         aggr_a_val_int_row = []
 
