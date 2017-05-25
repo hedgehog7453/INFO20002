@@ -1,10 +1,14 @@
-
 from flask import Flask, request
 import csv
 from jinja2 import Template
 from ptb import *
 import numpy 
 import pandas
+# import sys
+
+# reload(sys)
+# sys.setdefaultencoding('utf8')
+
 app = Flask(__name__, static_folder='.', static_url_path='')
 
 
@@ -16,12 +20,7 @@ def root():
 @app.route("/rawData")
 def rawData():
     # Read data
-    f = open("assets/dataset.csv")
-    csvreader = csv.reader(f, delimiter=',', skipinitialspace=True)
-    data = []
-    for row in csvreader:
-        data.append(row)
-    f.close()
+    data = readcsv()
 
     # Render data to html template
     template = Template(open('rawData.html').read())
@@ -33,16 +32,10 @@ def rawData():
 
 @app.route("/pivotTableBuilder")
 def pivotTableBuilder():
-    #Read cols
-    f = open("assets/dataset.csv")
-    csvreader = csv.reader(f, delimiter=',', skipinitialspace=True)
-    attr = []
+    # Read attributes
+    data = readcsv()
+    attr = data[0]
     attr_trimmed = []
-    for row in csvreader:
-        attr = row
-        break
-    f.close()
-    
     for a in attr:
         attr_trimmed.append(a.replace(" ", "").lower())
     # Render data to html template
@@ -67,7 +60,10 @@ def pivotTable():
     # trimmed attribute to original attribute
     t2o = {
         "dateofstop": "Date Of Stop", 
+        "monthofstop": "Month Of Stop",
+        "yearofstop": "Year Of Stop",
         "timeofstop": "Time Of Stop", 
+        "timeperiod": "Time Period",
         "description": "Description", 
         "belts": "Belts", 
         "personalinjury": "Personal Injury", 
@@ -79,8 +75,7 @@ def pivotTable():
         "model": "Model", 
         "color": "Color", 
         "race": "Race", 
-        "gender": "Gender", 
-        "geolocation": "Geolocation"
+        "gender": "Gender"
     }
 
     if filter_val=="":
@@ -88,14 +83,10 @@ def pivotTable():
     else:
         ptb_str = 'Row: ' + t2o[str(row)] + '; ' + 'Column: ' + t2o[str(col)] + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o[str(aggr_a)] + '<br>' + 'Filter attribute: ' + t2o[str(filter_a)] + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: ' + str(filter_val) + '<br>'
     
-    
-
     pt = pivot_table_builder_func(t2o[str(row)], t2o[str(col)], aggr_m, t2o[str(aggr_a)])
-
     row_val = pt.index.values
     col_val = pt.columns.values
-    aggr_a_val = pt[t2o[str(aggr_a)]].values
-    
+    aggr_a_val = pt[t2o[str(aggr_a)]].values    
 
     template = Template(open('pivotTable.html').read())
     return template.render(
@@ -117,7 +108,8 @@ def pivotTable():
 
 @app.route("/visualisation")
 def visualisation():
-    return
+    template = Template(open('observation.html').read())
+    return template.render()
 
 # Run the app
 if __name__ == "__main__":
