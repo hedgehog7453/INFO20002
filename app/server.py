@@ -78,8 +78,14 @@ def pivotTable():
         "gender": "Gender"
     }
 
+    agg_d = {
+        "count": "Count of",
+        "max": "Maximum of",
+        "min": "Minimum of"
+    }
+
     if filter_val=="":
-        ptb_str = 'Row: ' + t2o[str(row)] + '; ' + 'Column: ' + t2o[str(col)] + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o[str(aggr_a)] + '<br>' + 'Filter attribute: ' + t2o[str(filter_a)] + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: None<br>'
+        ptb_str = 'Row: ' + t2o[str(row)] + '; ' + 'Column: ' + t2o[str(col)] + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o[str(aggr_a)] + '<br>' + 'Filter attribute: ' + t2o[str(filter_a)] + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: none<br>'
     else:
         ptb_str = 'Row: ' + t2o[str(row)] + '; ' + 'Column: ' + t2o[str(col)] + '<br>' + 'Aggregation method: ' + str(aggr_m) + '; ' + 'Aggregation attribute: ' + t2o[str(aggr_a)] + '<br>' + 'Filter attribute: ' + t2o[str(filter_a)] + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: ' + str(filter_val) + '<br>'
     
@@ -88,19 +94,30 @@ def pivotTable():
     col_val = pt.columns.values
     aggr_a_val = pt[t2o[str(aggr_a)]].values    
 
+    aggr_a_val_int = []
+    aggr_a_val_int_row = []
+    for i in aggr_a_val:
+        for j in i:
+            try:
+                aggr_a_val_int_row.append(int(j))
+            except ValueError:
+                aggr_a_val_int_row.append("nan")
+        aggr_a_val_int.append(aggr_a_val_int_row)
+        aggr_a_val_int_row = []
+
     template = Template(open('pivotTable.html').read())
     return template.render(
         ptb_str = ptb_str,
         row = t2o[str(row)],
         column = t2o[str(col)],
-        val = t2o[str(aggr_a)],
+        val = agg_d[str(aggr_m)]+" "+t2o[str(aggr_a)],
         row_val = row_val,
         row_val_len = len(row_val),
         col_val = col_val,
         col_val_len = len(col_val),
-        aggr_a_val = aggr_a_val,
-        r = len(aggr_a_val),
-        c = len(aggr_a_val[0]),
+        aggr_a_val = aggr_a_val_int,
+        r = len(aggr_a_val_int),
+        c = len(aggr_a_val_int[0]),
         col_span = str(len(col_val)),
         col_span_val = str(len(col_val)+1)
     )

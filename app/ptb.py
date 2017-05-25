@@ -17,6 +17,7 @@ def readcsv():
     f.close()
     return data
 
+
 '''
 
 '''
