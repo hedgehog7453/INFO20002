@@ -54,25 +54,51 @@ Takes a DataFrame object and filter it by the input condition.
 Return the DataFrame object after filtering. 
 '''
 def filter_df(df, filter_attr, filter_cond, filter_val):
-    bools = []
-    if filter_cond=="yes" or filter_cond=="no":
-        bools = []
-    elif filter_cond=="contains" or filter_cond=="notContain":
-        bools = []
+    if filter_cond=="none":
+        return df
     else:
         bools = []
-    return df
-
+        if filter_cond=="=":
+            for cell in df[str(filter_attr)]:
+                if cell==filter_val: bools.append(True)
+                else: bools.append(False)
+        elif filter_cond==">":
+            for cell in df[str(filter_attr)]:
+                if int(cell)>int(filter_val): bools.append(True)
+                else: bools.append(False)
+        elif filter_cond=="<":
+            for cell in df[str(filter_attr)]:
+                if int(cell)<int(filter_val): bools.append(True)
+                else: bools.append(False)
+        elif filter_cond=="!=":
+            for cell in df[str(filter_attr)]:
+                if cell!=filter_val: bools.append(True)
+                else: bools.append(False)
+        elif filter_cond=="contains":
+            for cell in df[str(filter_attr)]:
+                if filter_val in cell: bools.append(True)
+                else: bools.append(False)
+        elif filter_cond=="notContain":
+            for cell in df[str(filter_attr)]:
+                if filter_val in cell: bools.append(False)
+                else: bools.append(True)
+        elif filter_cond=="yes":
+            for cell in df[str(filter_attr)]:
+                if cell=="Yes": bools.append(True)
+                else: bools.append(False)
+        elif filter_cond=="no":
+            for cell in df[str(filter_attr)]:
+                if cell=="No": bools.append(True)
+                else: bools.append(False)
+        series = pd.Series(bools)
+        return df[series]
 
 '''
 
 '''
 def pivot_table_builder_func(row, col, aggr_m, aggr_a, filter_attr, filter_cond, filter_val):
     odf = pd.read_csv(FILENAME)
-    if not filter_cond=="none":
-        df = filter_df(odf, filter_attr, filter_cond, filter_val)
-    else:
-        df = odf
+    df = filter_df(odf, filter_attr, filter_cond, filter_val)
     t = pd.pivot_table(df, index = [row], columns = [col], values = [aggr_a], aggfunc={aggr_a:len})
 
     return t

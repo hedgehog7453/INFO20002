@@ -116,20 +116,31 @@
             document.getElementById("filter_cond").value==">" ||
             document.getElementById("filter_cond").value=="<" ||
             document.getElementById("filter_cond").value=="!=") {
-            if (document.getElementById("aggregation_attr").value!="yearofstop" &&
-                document.getElementById("aggregation_attr").value!="year") {
+            if (document.getElementById("filter_attr").value!="yearofstop" &&
+                document.getElementById("filter_attr").value!="year") {
                 document.getElementById("errmsg").innerHTML = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><strong>Filter error: </strong>This filter only applies to column "Year Of Stop" or "Year".</div>';
                 return false;
             }
+            if (document.getElementById("filter_val").value=="") {
+                document.getElementById("errmsg").innerHTML = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><strong>Filter error: </strong>filter value is empty. </div>';
+                return false;
+            }
         }
-        // Yes No filter
-        if (document.getElementById("filter_cond").value=="yes" ||
-            document.getElementById("filter_cond").value=="no") {
-            if (document.getElementById("aggregation_attr").value!="belts" &&
-                document.getElementById("aggregation_attr").value!="personalinjury" &&
-                document.getElementById("aggregation_attr").value!="commerciallicense" &&
-                document.getElementById("aggregation_attr").value!="commercialvehicle") {
+        // Yes/No filter
+        else if (document.getElementById("filter_cond").value=="yes" ||
+                 document.getElementById("filter_cond").value=="no") {
+            if (document.getElementById("filter_attr").value!="belts" &&
+                document.getElementById("filter_attr").value!="personalinjury" &&
+                document.getElementById("filter_attr").value!="commerciallicense" &&
+                document.getElementById("filter_attr").value!="commercialvehicle") {
                 document.getElementById("errmsg").innerHTML = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><strong>Filter error: </strong>This column does not contain value "Yes" or "No".</div>';
+                return false;
+            }
+        }
+        // Contains/Not contains filter
+        else if (document.getElementById("filter_cond").value!="none") {
+            if (document.getElementById("filter_val").value=="") {
+                document.getElementById("errmsg").innerHTML = '<div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><strong>Filter error: </strong>filter value is empty. </div>';
                 return false;
             }
         }
