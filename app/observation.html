@@ -42,7 +42,7 @@ visualisation.
             here. </a>
         </p>
     </div>
-    
+    <hr>
     <!-- Hypothesis 1 -->
     <div class="obs-container">
         <div class="row">
@@ -53,10 +53,10 @@ visualisation.
                         <b>Hypothesis</b>: Traffic violations are more likely to 
                         take place when temperature is relatively higher (June, 
                         July, Aug). <br><br>
-                        <b>Insight</b>: Temperature doesn't affect the number of 
-                        traffic violations, our assumption was when temperature 
-                        is higher, people might be more impatient. It seems like 
-                        low temperature has its disadvantage as well.
+                        <b>Note</b>: We omitted the 2017 data from the dataset, because 2017 is still not complete, if we do add it in, there will be violations in the second half of 2017 missing, which can be misleading when plotting the histogram.<br><br>
+                        <b>Insight</b>: Traffic violations distribute relatively evenly throughout the year. It's fair to conclude that temperature doesn't affect the number of 
+                        traffic violations that much. Our original assumption was when temperature 
+                        is higher, people might be more impatient and lean to violating traffic. Acutually during winter, vehicles tend to have a longer stopping distance due to the very low temperature, which makes them harder to drive. That could contribute to the traffic violations. And natrual phenomenon like snowing hinders driving as well, so hot days and cold days both have their disadvantages. From above, saying temperature doesn't afftect traffic violations makes sense.
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -71,7 +71,7 @@ visualisation.
                                     text: 'Traffic Violations vs Month of Stop'
                                 },
                                 subtitle: {
-                                    text: 'Source: data.montgomerycountymd.gov'
+                                    text: 'Source: DataMontgomery'
                                 },
                                 credits: {
                                     enabled: false,
@@ -110,6 +110,7 @@ visualisation.
             </div>
         </div>
     </div>
+    <hr>
     
     <!-- Hypothesis 2 -->
     <div class="obs-container">
@@ -128,7 +129,7 @@ visualisation.
                         <b>Insight</b>: As time goes by, people seem to violate 
                         traffic rules more and more, it could be that many 
                         people start to drive, there are more new drivers who 
-                        are not familiar with the road.
+                        are not familiar with the road. At 2015, there is a population peak in New York, and according to the population pyramid in Hypothesis 2, there are a large number of population aged between 20-15, which can be a huge potenial number of new drivers every year. So there is a plausible explanation of this trend.
                 </div>
                 <div class="col-md-6">
                     <div id="hypo2" style="width:100%; height:400px;"></div>
@@ -142,7 +143,7 @@ visualisation.
                                     text: 'Population percentage of Violations From 2012 to 2016 (Number Per Million)',
                                 },
                                 subtitle: {
-                                    text: 'Source: data.montgomerycountymd.gov',
+                                    text: 'Source: DataMontgomery',
                                 },
                                 credits: {
                                     enabled: false,
@@ -176,6 +177,7 @@ visualisation.
             </div>
         </div>
     </div>
+    <hr>
 
     <!-- Hypothesis 3 -->
     <div class="obs-container">
@@ -186,14 +188,13 @@ visualisation.
                     <p class="obs-text">
                         <b>Hypothesis</b>: 'Women are bad drivers' stereotype is 
                         actually not true.<br><br>
+                        <b>Clearification</b>: To clearify, in New York, the percentages of male and female are pretty close to each other, being 47.8% and 52.2% repectively. and in each age group, they are relatively balanced, which makes the drving-age-population roughly equal, according to the population pyrimad. So there is no 'less female population' or 'less female drivers' to interfere the analysis.<br><br>
                         <b>Insight</b>: Some could argue that there is no chart 
                         showing whether female have a less percenatge of causing 
                         fatality than male, but at least from the violation 
                         percentage, it's pretty clear that females, at least in 
-                        New York, are very concious of the traffic rules.
+                        New York, are very concious of the traffic rules. In New York, more than 70% of traffic violations are caused by males, we can saftely conclude that, leaving the drving skills aside, females tend to violate traffic rules less than males.
                     </p>
-                </div>
-                <div class="col-md-6">
                     <div id="hypo3" style="width:100%; height:400px;"></div>
                     <script type="text/javascript">
                         $(function () {
@@ -210,7 +211,7 @@ visualisation.
                                     text: 'Genders of Traffic Violators'
                                 },
                                 subtitle: {
-                                    text: 'Source: data.montgomerycountymd.gov',
+                                    text: 'Source: DataMontgomery',
                                 },
                                 tooltip: {
                                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -245,10 +246,16 @@ visualisation.
                         });
                     </script>
                 </div>
+                <div class="col-md-6">
+                <p>
+                    <b>Population Pyramid</b><br><br>
+                </p>
+                    <img class= "obs_image" src="/assets/pyramid.PNG" >
+                </div>
             </div>
         </div>
     </div>
-
+    <hr>
     <!-- Hypothesis 4 -->
     <div class="obs-container">
         <div class="row hypo">
@@ -265,7 +272,7 @@ visualisation.
                         but hardly any injuries, while the first peak hour, with 
                         not so many violations, however a large number of 
                         personal injuries. The only variable between those two 
-                        peak hours is daylight.
+                        peak hours is daylight. Hence we can see that, violations at night, due to worse lighting conditions, are more easily to cause injuries.
                      </p>
                 </div>
                 <div class="col-md-6">
@@ -281,7 +288,7 @@ visualisation.
                                     text: 'Traffic Violations at Each Time Period'
                                 },
                                 subtitle: {
-                                    text: 'Source: data.montgomerycountymd.gov',
+                                    text: 'Source: DataMontgomery',
                                 },
                                 credits: {
                                     enabled: false,
@@ -354,7 +361,7 @@ visualisation.
                     <p class="obs-text">
                         <b>Explantion</b>: People who violate traffic rules not 
                         because of not wearing seat belt, tend to have their 
-                        seat belt unfastened. <br><br>
+                        seat belt unfastened as well. Note: this is not an analysis of relation between safety and seat belt, instead, we aim to find a corelation between 'not having the habbit of weaing seat belt' and 'breaking other traffic rules other than not wearing seat belts'.<br><br>
                         <b>Insight</b>: There are 3474 violation cases not 
                         caused by not wearing seat belt, it still contains 3381 
                         cases without seat belt fastened. This means people not 
@@ -362,6 +369,9 @@ visualisation.
                         traffic rules as well. People who have a good driving 
                         habit, fasten their seatbelts every time, probably are 
                         more likely to respect the traffic rules.
+                    </p>
+                    <p>                        
+
                     </p>
                 </div>
                 <div class="row">
@@ -380,7 +390,7 @@ visualisation.
                                     text: 'Violations(not caused by unfastened seatbelt) percentage with vs without Belt'
                                 },
                                 subtitle: {
-                                    text: 'Source: data.montgomerycountymd.gov',
+                                    text: 'Source: DataMontgomery',
                                 },
                                 tooltip: {
                                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -423,7 +433,7 @@ visualisation.
                                     text: 'Violation Involving Personal Injuries Percentage with vs without Belt'
                                 },
                                 subtitle: {
-                                    text: 'Source: data.montgomerycountymd.gov',
+                                    text: 'Source: DataMontgomery',
                                 },
                                 tooltip: {
                                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
