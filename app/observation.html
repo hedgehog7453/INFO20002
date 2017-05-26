@@ -30,17 +30,22 @@ visualisation.
         
     <div class="row obs-container">
         <h4>Introduction</h4>
-        <p class="obs-text">
+        <div class="col-md-6">
+            <img class="obs_image intro-img" src="/assets/violation.jpg">
+        </div>
+        <p class="obs-text col-md-6">
             We collected the dataset from DataMontgomery, a open-source data 
             website of Montgomery County Government. The dataset contains a 
             large range of attributes, mostly catagorical. Data processing such 
             as error fixing, dataset simplifying is adopted for analysis 
             purpose. Five hypothesis are analyzed by visualization methods.<br><br>
-            To view the raw data used for this website, click <a href="/rawData">here</a>. <br>
+            To view the raw data used for this website, click 
+            <a href="/rawData">here</a>. <br>
             Original data source can be accessed 
             <a href="https://data.montgomerycountymd.gov/Public-Safety/Traffic-Violations/4mse-ku6q">
-            here. </a>
+            here</a>.
         </p>
+        
     </div>
     <hr>
     <!-- Hypothesis 1 -->
@@ -203,74 +208,90 @@ visualisation.
         <div class="row hypo">
             <h4>Hypothesis 3: Gender is not a factor of traffic violations</h4>
             <div class="hypo">
-                <div class="col-md-6">
+                <div class="row">
                     <p class="obs-text">
                         <b>Hypothesis</b>: 'Women are bad drivers' stereotype is 
                         actually not true.<br><br>
-                        <b>Clarification</b>: To clarify, in New York, the percentages of male and female are pretty close to each other, being 47.8% and 52.2% respectively. And in each age group, they are relatively balanced, which makes the driving-age-population roughly equal, according to the population pyramid. So there is no 'less female population' or 'less female drivers' to interfere the analysis.<br><br>
+                        <b>Clarification</b>: To clarify, in New York, the 
+                        percentages of male and female are pretty close to each 
+                        other, being 47.8% and 52.2% respectively. And in each 
+                        age group, they are relatively balanced, which makes the 
+                        driving-age-population roughly equal, according to the 
+                        population pyramid. So there is no 'less female 
+                        population' or 'less female drivers' to interfere the 
+                        analysis.<br><br>
                         <b>Insight</b>: Some could argue that there is no chart 
                         showing whether female have a less percentge of causing 
                         fatality than male, but at least from the violation 
                         percentage, it's pretty clear that females, at least in 
-                        New York, are very conscious of the traffic rules. In New York, more than 70% of traffic violations are caused by males, we can safely conclude that, leaving the driving skills aside, females tend to violate traffic rules less than males.
+                        New York, are very conscious of the traffic rules. In 
+                        New York, more than 70% of traffic violations are caused 
+                        by males, we can safely conclude that, leaving the 
+                        driving skills aside, females tend to violate traffic 
+                        rules less than males.
                     </p>
-                    <div id="hypo3" style="width:100%; height:400px;"></div>
-                    <script type="text/javascript">
-                        $(function () {
-                            // Build the chart
-                            $('#hypo3').highcharts({
-                                chart: {
-                                    type: 'pie',
-                                    spacingBottom: 50
-                                },
-                                credits: {
-                                    enabled: false,
-                                },
-                                title: {
-                                    text: 'Genders of Traffic Violators'
-                                },
-                                subtitle: {
-                                    text: 'Source: DataMontgomery',
-                                },
-                                tooltip: {
-                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                                },
-                                plotOptions: {
-                                    pie: {
-                                        allowPointSelect: true,
-                                        cursor: 'pointer',
-                                        showInLegend: true
-                                    }
-                                },
-                                legend: {
-                                      itemStyle: {
-                                      color: 'gray'
-                                    },
-                                },
-                                series: [{
-                                    name: 'percentage',
-                                    colorByPoint: true,
-                                    data: [{
-                                        name: 'Female',
-                                        y: 1032
-                                    }, {
-                                        name: 'Male',
-                                        y: 2532
-                                    }, {
-                                        name: 'Unknown',
-                                        y: 4
-                                    }]
-                                }]
-                            });
-                        });
-                    </script>
                 </div>
                 <div class="col-md-6">
-                <p>
-                    <b>Population Pyramid</b><br><br>
-                </p>
-                    <img class= "obs_image" src="/assets/pyramid.PNG" >
+                    <p>
+                        <h5>Population Pyramid</h5>
+                        <small>Source: 
+                            <a href="http://worldpopulationreview.com/states/new-york-population/">http://worldpopulationreview.com/states/new-york-population/</a>
+                        </small>
+                    </p>
+                    <img class="obs_image" src="/assets/pyramid.PNG">
                 </div>
+                <div class="col-md-6">
+                    <div id="hypo3" style="width:100%; height:400px;"></div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        // Build the chart
+                        $('#hypo3').highcharts({
+                            chart: {
+                                type: 'pie',
+                                spacingBottom: 50
+                            },
+                            credits: {
+                                enabled: false,
+                            },
+                            title: {
+                                text: 'Genders of Traffic Violators'
+                            },
+                            subtitle: {
+                                text: 'Source: DataMontgomery',
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    showInLegend: true
+                                }
+                            },
+                            legend: {
+                                  itemStyle: {
+                                  color: 'gray'
+                                },
+                            },
+                            series: [{
+                                name: 'percentage',
+                                colorByPoint: true,
+                                data: [{
+                                    name: 'Female',
+                                    y: 1032
+                                }, {
+                                    name: 'Male',
+                                    y: 2532
+                                }, {
+                                    name: 'Unknown',
+                                    y: 4
+                                }]
+                            }]
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
@@ -282,16 +303,18 @@ visualisation.
             <div class="hypo">
                 <div class="col-md-6">
                     <p class="obs-text"> 
-                    <b>Hypothesis</b>: Traffic violations at night are more 
-                    likely to cause personal injuries. <br><br>
+                        <b>Hypothesis</b>: Traffic violations at night are more 
+                        likely to cause personal injuries. <br><br>
                         <b>Insight</b>: Bad lighting conditions at night could 
-                        affect drivers' sight, which leads to possible 
-                        violations. We can compare 2 peak hours on the road: 6-7 and 17-18, during which the roads are most congested.
-                        The second peak hour has a large number of violations 
-                        but hardly any injuries, while the first peak hour, with 
-                        not so many violations, however a large number of 
-                        personal injuries. The only variable between those two 
-                        peak hours is daylight. Hence we can see that, violations at night, due to worse lighting conditions, are more easily to cause injuries.
+                        affect drivers' sight, which leads to possible violations. 
+                        We can compare 2 peak hours on the road: 6-7 and 17-18, 
+                        during which the roads are most congested. The second peak 
+                        hour has a large number of violations but hardly any 
+                        injuries, while the first peak hour, with not so many 
+                        violations, however a large number of personal injuries. 
+                        The only variable between those two peak hours is daylight. 
+                        Hence we can see that, violations at night, due to worse 
+                        lighting conditions, are more easily to cause injuries.
                      </p>
                 </div>
                 <div class="col-md-6">
@@ -369,18 +392,24 @@ visualisation.
             </div>
         </div>
     </div>
-
+    <hr>
     <!-- Hypothesis 5 -->
     <div class="obs-container">
         <div class="row hypo">
-            <h4>Hypothesis 5:  There is a correlation between traffic violations 
+            <h4>Hypothesis 5: Correlation between traffic violations 
             and unfastened seat belts </h4>
             <div class="hypo">
                 <div class="row">
                     <p class="obs-text">
+                        <b>Hypothesis</b>: There is a correlation between 
+                        traffic violations and unfastened seat belts.<br><br>
                         <b>Explantion</b>: People who violate traffic rules not 
                         because of not wearing seat belt, tend to have their 
-                        seat belt unfastened as well. Note: this is not an analysis of relation between safety and seat belt, instead, we aim to find a corelation between 'not having the habbit of weaing seat belt' and 'breaking other traffic rules other than not wearing seat belts'.<br><br>
+                        seat belt unfastened as well. Note: this is not an 
+                        analysis of relation between safety and seat belt, 
+                        instead, we aim to find a corelation between 'not having 
+                        the habbit of weaing seat belt' and 'breaking other 
+                        traffic rules other than not wearing seat belts'.<br><br>
                         <b>Insight</b>: There are 3474 violation cases not 
                         caused by not wearing seat belt, it still contains 3381 
                         cases without seat belt fastened. This means people not 
@@ -388,9 +417,6 @@ visualisation.
                         traffic rules as well. People who have a good driving 
                         habit, fasten their seatbelts every time, probably are 
                         more likely to respect the traffic rules.
-                    </p>
-                    <p>                        
-
                     </p>
                 </div>
                 <div class="row">
