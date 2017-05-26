@@ -84,6 +84,10 @@ def pivotTable():
         aggr_a_val_int.append(aggr_a_val_int_row)
         aggr_a_val_int_row = []
 
+    color_scale = add_style(row_val, aggr_a_val_int)
+    tbody = color_scale[0]
+    cs = color_scale[1]
+
     # Render data to html template
     template = Template(open('pivotTable.html').read())
     return template.render(
@@ -91,15 +95,12 @@ def pivotTable():
         row = t2o2t(str(row)),
         column = t2o2t(str(col)),
         val = agg_d[str(aggr_m)]+" "+t2o2t(str(aggr_a)),
-        row_val = row_val,
-        row_val_len = len(row_val),
         col_val = col_val,
         col_val_len = len(col_val),
-        aggr_a_val = aggr_a_val_int,
-        r = len(aggr_a_val_int),
-        c = len(aggr_a_val_int[0]),
         col_span = str(len(col_val)),
-        col_span_val = str(len(col_val)+1)
+        col_span_val = str(len(col_val)+1),
+        tbody = tbody,
+        color_scale = cs
     )
 
 

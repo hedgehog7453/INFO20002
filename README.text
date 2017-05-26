@@ -1,8 +1,0 @@
-# INFO20002
-INFO20002 Project Phase 3
-To run this web app, please follow the simple instruction:
-1.Open anaconda prompt
-2.go to the directory that contains this file 'INFO20002'
-3.go to the directory under the file 'app' in the INFO20002 file
-4.type in 'python server.py'
-5.open a new tag in google chrome or any other browser, go to the address: localhost:5000

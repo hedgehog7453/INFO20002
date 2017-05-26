@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+from math import ceil
 
 FILENAME = "assets/dataset.csv"
 ORIGINAL_COL = ["Date Of Stop", 
@@ -110,10 +111,44 @@ def pivot_table_builder_func(row, col, aggr_m, aggr_a, filter_attr, filter_cond,
     return t
 
 
-
-
-
-
-
-
-
+'''
+Takes all column values and aggregation values, return a html string
+'''
+def add_style(row, aggr):
+    tbody = ""
+    # Find the maximum value and the minimum value (other than 0) from 
+    # aggregation values
+    max_val = 0
+    min_val = aggr[0][0]
+    for r in aggr:
+        for cell in r:
+            if cell>max_val: max_val=cell
+            if cell<min_val and cell!=0: min_val=cell
+    # Find the corresponding color for each cell
+    r_max = 227
+    g_max = 74
+    b_max = 51
+    r_min = 254
+    g_min = 232
+    b_min = 200
+    for i in range(len(row)):
+        tbody += "<tr><td>%s</td>"%str(row[i])
+        for j in range(len(aggr[0])):
+            val = aggr[i][j]
+            r = ceil(r_min-((val-min_val)*1.0/(max_val-min_val))*(r_min-r_max))
+            g = ceil(g_min-((val-min_val)*1.0/(max_val-min_val))*(g_min-g_max))
+            b = ceil(b_min-((val-min_val)*1.0/(max_val-min_val))*(b_min-b_max))
+            if val==0:
+                r = 255
+                g = 255
+                b = 255
+            tbody += '<td style="background-color:rgb(%d,%d,%d);">%s</td>'%(r,g,b,str(val))
+        tbody += "</tr>"
+        cs = '<tr>Color Scale</tr><tr>'
+        for i in range(0,11):
+            r = r_min-(i/10.0)*(r_min-r_max)
+            g = g_min-(i/10.0)*(g_min-g_max)
+            b = b_min-(i/10.0)*(b_min-b_max)
+            cs += '<td style="background-color:rgb(%d,%d,%d);color:rgb(%d,%d,%d);" class="cs-cell">hi</td>'%(r,g,b,r,g,b)
+        cs += "</tr><tr><td>min</td>"+"<td></td>"*9+"<td>max</td></tr>"
+    return tbody, cs
