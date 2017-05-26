@@ -3,7 +3,6 @@ Observation page
 This page introduces our hypothesis and insights based on the dataset by data 
 visualisation. 
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,27 +24,22 @@ visualisation.
     <a class="btn btn-info btn-back" onclick="location.href='/';">
         <i class="fa fa-reply" aria-hidden="true"></i>Back
     </a>
-
     <h2>Observations</h2>
-        
     <div class="row obs-container">
         <h4>Introduction</h4>
         <div class="col-md-6">
             <img class="obs_image intro-img" src="/assets/violation.jpg">
         </div>
         <p class="obs-text col-md-6">
-            We collected the dataset from DataMontgomery, a open-source data 
-            website of Montgomery County Government. The dataset contains a 
-            large range of attributes, mostly catagorical. Data processing such 
-            as error fixing, dataset simplifying is adopted for analysis 
-            purpose. Five hypothesis are analyzed by visualization methods.<br><br>
-            To view the raw data used for this website, click 
-            <a href="/rawData">here</a>. <br>
-            Original data source can be accessed 
+            We collected the dataset from DataMontgomery, a open-source data website of Montgomery County Government. The dataset, which is comprised of 1048576 rows and 35 columns, contains a large range of attributes, mostly catagorical.It contains data from all states in the U.S. from 2012 till March 2017 with a large range of contents such as date, car model, types of violations, geolocation etc.<br><br>
+            Data processing such as error fixing, dataset simplifying is adopted for analysis purpose. We eliminated data from all states except for New York city,  fo the reason of limiting raw data loading time. It takes too long to load a million-row dataset. Looking particularly into New York city, five hypothesis are analyzed by visualization methods.
+            <br>
+            <br> To view the raw data used for this website, click
+            <a href="/rawData">here</a>.
+            <br> Original data source can be accessed
             <a href="https://data.montgomerycountymd.gov/Public-Safety/Traffic-Violations/4mse-ku6q">
             here</a>.
         </p>
-        
     </div>
     <hr>
     <!-- Hypothesis 1 -->
@@ -55,82 +49,69 @@ visualisation.
             <div class="hypo">
                 <div class="obstext-container col-md-6">
                     <p class="obs-text">
-                        <b>Hypothesis</b>: Traffic violations are more likely to 
-                        take place when temperature is relatively higher (June, 
-                        July, Aug). <br><br>
-                        <b>Note</b>: We omitted the 2017 data from the dataset, 
-                        because 2017 is still not complete, if we do add it in, 
-                        there will be violations in the second half of 2017 
-                        missing, which can be misleading when plotting the 
-                        histogram.<br><br>
-                        <b>Insight</b>: Traffic violations distribute relatively 
-                        evenly throughout the year. It's fair to conclude that 
-                        temperature doesn't affect the number of traffic 
-                        violations that much. Our original assumption was when 
-                        temperature is higher, people might be more impatient 
-                        and lean to violating traffic. Acutually during winter, 
-                        vehicles tend to have a longer stopping distance due to 
-                        the very low temperature, which makes them harder to 
-                        drive. That could contribute to the traffic violations. 
-                        And natrual phenomenon like snowing hinders driving as 
-                        well, so hot days and cold days both have their 
-                        disadvantages. From above, saying temperature doesn't 
-                        affect traffic violations makes sense.
+                        <b>Hypothesis</b>: Traffic violations are more likely to take place when temperature is relatively higher (June, July, Aug).
+                        <br>
+                        <br>
+                        <b>Note</b>: We omitted the 2017 data from the dataset, because 2017 is still not complete, if we do add it in, there will be violations in the second half of 2017 missing, which can be misleading when plotting the histogram.
+                        <br>
+                        <br>
+                        <b>Insight</b>: Traffic violations distribute relatively evenly throughout the year. It's fair to conclude that temperature doesn't affect the number of traffic violations that much. Our original assumption was when temperature is higher, people might be more impatient and lean to violating traffic. Acutually during winter, vehicles tend to have a longer stopping distance due to the very low temperature, which makes them harder to drive. That could contribute to the traffic violations. And natrual phenomenon like snowing hinders driving as well, so hot days and cold days both have their disadvantages. From above, saying temperature doesn't affect traffic violations makes sense.
                     </p>
                 </div>
                 <div class="col-md-6">
                     <div id="hypo1" style="width:100%; height:400px;"></div>
                     <script type="text/javascript">
-                        $(function () { 
-                            $('#hypo1').highcharts({
-                                chart: {
-                                    type: 'column'
-                                },
+                    $(function() {
+                        $('#hypo1').highcharts({
+                            chart: {
+                                type: 'column'
+                            },
+                            title: {
+                                text: 'Traffic Violations vs Month of Stop'
+                            },
+                            subtitle: {
+                                text: 'Source: DataMontgomery'
+                            },
+                            credits: {
+                                enabled: false,
+                            },
+                            xAxis: {
+                                categories: ['Jan', 'Feb', 'Mar', 'Apr',
+                                    'May', 'Jun', 'Jul', 'Aug',
+                                    'Sept', 'Oct', 'Nov', 'Dec'
+                                ],
+                                crosshair: true
+                            },
+                            yAxis: {
                                 title: {
-                                    text: 'Traffic Violations vs Month of Stop'
-                                },
-                                subtitle: {
-                                    text: 'Source: DataMontgomery'
-                                },
-                                credits: {
-                                    enabled: false,
-                                },
-                                xAxis: {
-                                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 
-                                                'May', 'Jun', 'Jul', 'Aug', 
-                                                'Sept', 'Oct', 'Nov', 'Dec'], 
-                                    crosshair: true
-                                },
-                                yAxis: {
-                                    title: {
-                                        text: 'Number of Violations'
-                                    }
-                                },
-                                tooltip: {
-                                    shared: true,
-                                    useHTML: true,
-                                    headerFormat: '<p>{point.key}</p><table>',
-                                    pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
-                                        '<td style="text-align: right">{point.y}</td></tr>',
-                                    footerFormat: '</table>',
-                                },
-                                series: [{
-                                    name: 'No personal injuries',
-                                    data: [215, 256, 285, 273, 293, 234, 288, 
-                                            293, 269, 318, 348, 247]
-                                }, {
-                                    name: 'Personal injuries involved',
-                                    data: [1, 7, 3, 1, 10, 0, 10, 2, 8, 5, 7, 0]
-                                }]
-                            });
+                                    text: 'Number of Violations'
+                                }
+                            },
+                            tooltip: {
+                                shared: true,
+                                useHTML: true,
+                                headerFormat: '<p>{point.key}</p><table>',
+                                pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+                                    '<td style="text-align: right">{point.y}</td></tr>',
+                                footerFormat: '</table>',
+                            },
+                            series: [{
+                                name: 'No personal injuries',
+                                data: [215, 256, 285, 273, 293, 234, 288,
+                                    293, 269, 318, 348, 247
+                                ]
+                            }, {
+                                name: 'Personal injuries involved',
+                                data: [1, 7, 3, 1, 10, 0, 10, 2, 8, 5, 7, 0]
+                            }]
                         });
+                    });
                     </script>
                 </div>
             </div>
         </div>
     </div>
     <hr>
-    
     <!-- Hypothesis 2 -->
     <div class="obs-container">
         <div class="row hypo">
@@ -138,71 +119,61 @@ visualisation.
             <div class="hypo">
                 <div class="col-md-6">
                     <p class="obs-text">
-                        <b>Hypothesis</b>: Traffic violations tend to increase 
-                        with the year goes by. <br><br>
-                        <b>Plotting</b>: The population in NY since 2012 to 2016 
-                        is 8.336, 8.438, 8.491, 8.550 and 8.538 million 
-                        repectively. We now use the percentage of violation 
-                        against total population of NY each year, to achieve a 
-                        more objective view of the trend of violation number.<br><br>
-                        <b>Insight</b>: As time goes by, people seem to violate 
-                        traffic rules more and more, it could be that many 
-                        people start to drive, there are more new drivers who 
-                        are not familiar with the road. At 2015, there is a 
-                        population peak in New York, and according to the 
-                        population pyramid in Hypothesis 3, there are a large 
-                        number of population aged between 20-15, which can be a 
-                        huge potential number of new drivers every year. So 
-                        there is a plausible explanation of this trend.
+                        <b>Hypothesis</b>: Traffic violations tend to increase with the year goes by.
+                        <br>
+                        <br>
+                        <b>Plotting</b>: The population in NY since 2012 to 2016 is 8.336, 8.438, 8.491, 8.550 and 8.538 million repectively. We now use the percentage of violation against total population of NY each year, to achieve a more objective view of the trend of violation number.
+                        <br>
+                        <br>
+                        <b>Insight</b>: As time goes by, people seem to violate traffic rules more and more, it could be that many people start to drive, there are more new drivers who are not familiar with the road. At 2015, there is a population peak in New York, and according to the population pyramid in Hypothesis 3, there are a large number of population aged between 20-15, which can be a huge potential number of new drivers every year. So there is a plausible explanation of this trend.
                 </div>
                 <div class="col-md-6">
                     <div id="hypo2" style="width:100%; height:400px;"></div>
                     <script type="text/javascript">
-                        $(function () {
-                            $('#hypo2').highcharts({
-                                legend: {
-                                    enabled: false
-                                },
+                    $(function() {
+                        $('#hypo2').highcharts({
+                            legend: {
+                                enabled: false
+                            },
+                            title: {
+                                text: 'Population percentage of Violations From 2012 to 2016 (Number Per Million)',
+                            },
+                            subtitle: {
+                                text: 'Source: DataMontgomery',
+                            },
+                            credits: {
+                                enabled: false,
+                            },
+                            xAxis: {
                                 title: {
-                                    text: 'Population percentage of Violations From 2012 to 2016 (Number Per Million)',
+                                    text: 'Year'
                                 },
-                                subtitle: {
-                                    text: 'Source: DataMontgomery',
+                                categories: ['2012', '2013', '2014', '2015', '2016']
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Violation/Injury Number Per Million'
                                 },
-                                credits: {
-                                    enabled: false,
-                                },
-                                xAxis: {
-                                    title: {
-                                        text: 'Year'
-                                    },
-                                    categories: ['2012', '2013', '2014', '2015', '2016']
-                                },
-                                yAxis: {
-                                    title: {
-                                        text: 'Violation/Injury Number Per Million'
-                                    },
-                                },
-                                tooltip: {
-                                    shared: true,
-                                    crosshairs: true,
-                                },
-                                series: [{
-                                    name: 'No personal injuries',
-                                    data: [51.94,63.75,92.92,97.43,85.03]
-                                }, {
-                                    name: 'Personal injuries involved',
-                                    data: [0.72,3.79,0.12,0.23,1.522]
-                                }]
-                            });
+                            },
+                            tooltip: {
+                                shared: true,
+                                crosshairs: true,
+                            },
+                            series: [{
+                                name: 'No personal injuries',
+                                data: [51.94, 63.75, 92.92, 97.43, 85.03]
+                            }, {
+                                name: 'Personal injuries involved',
+                                data: [0.72, 3.79, 0.12, 0.23, 1.522]
+                            }]
                         });
+                    });
                     </script>
                 </div>
             </div>
         </div>
     </div>
     <hr>
-
     <!-- Hypothesis 3 -->
     <div class="obs-container">
         <div class="row hypo">
@@ -210,25 +181,13 @@ visualisation.
             <div class="hypo">
                 <div class="row">
                     <p class="obs-text">
-                        <b>Hypothesis</b>: 'Women are bad drivers' stereotype is 
-                        actually not true.<br><br>
-                        <b>Clarification</b>: To clarify, in New York, the 
-                        percentages of male and female are pretty close to each 
-                        other, being 47.8% and 52.2% respectively. And in each 
-                        age group, they are relatively balanced, which makes the 
-                        driving-age-population roughly equal, according to the 
-                        population pyramid. So there is no 'less female 
-                        population' or 'less female drivers' to interfere the 
-                        analysis.<br><br>
-                        <b>Insight</b>: Some could argue that there is no chart 
-                        showing whether female have a less percentge of causing 
-                        fatality than male, but at least from the violation 
-                        percentage, it's pretty clear that females, at least in 
-                        New York, are very conscious of the traffic rules. In 
-                        New York, more than 70% of traffic violations are caused 
-                        by males, we can safely conclude that, leaving the 
-                        driving skills aside, females tend to violate traffic 
-                        rules less than males.
+                        <b>Hypothesis</b>: 'Women are bad drivers' stereotype is actually not true.
+                        <br>
+                        <br>
+                        <b>Clarification</b>: To clarify, in New York, the percentages of male and female are pretty close to each other, being 47.8% and 52.2% respectively. And in each age group, they are relatively balanced, which makes the driving-age-population roughly equal, according to the population pyramid. So there is no 'less female population' or 'less female drivers' to interfere the analysis.
+                        <br>
+                        <br>
+                        <b>Insight</b>: Some could argue that there is no chart showing whether female have a less percentge of causing fatality than male, but at least from the violation percentage, it's pretty clear that females, at least in New York, are very conscious of the traffic rules. In New York, more than 70% of traffic violations are caused by males, we can safely conclude that, leaving the driving skills aside, females tend to violate traffic rules less than males.
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -244,18 +203,184 @@ visualisation.
                     <div id="hypo3" style="width:100%; height:400px;"></div>
                 </div>
                 <script type="text/javascript">
-                    $(function () {
+                $(function() {
+                    // Build the chart
+                    $('#hypo3').highcharts({
+                        chart: {
+                            type: 'pie',
+                            spacingBottom: 50
+                        },
+                        credits: {
+                            enabled: false,
+                        },
+                        title: {
+                            text: 'Genders of Traffic Violators'
+                        },
+                        subtitle: {
+                            text: 'Source: DataMontgomery',
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                showInLegend: true
+                            }
+                        },
+                        legend: {
+                            itemStyle: {
+                                color: 'gray'
+                            },
+                        },
+                        series: [{
+                            name: 'percentage',
+                            colorByPoint: true,
+                            data: [{
+                                name: 'Female',
+                                y: 1032
+                            }, {
+                                name: 'Male',
+                                y: 2532
+                            }, {
+                                name: 'Unknown',
+                                y: 4
+                            }]
+                        }]
+                    });
+                });
+                </script>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Hypothesis 4 -->
+    <div class="obs-container">
+        <div class="row hypo">
+            <h4>Hypothesis 4: Violations at night are more likely to lead to injuries</h4>
+            <div class="hypo">
+                <div class="col-md-6">
+                    <p class="obs-text">
+                        <b>Hypothesis</b>: Traffic violations at night are more likely to cause personal injuries.
+                        <br>
+                        <br>
+                        <b>Insight</b>: Bad lighting conditions at night could affect drivers' sight, which leads to possible violations. We can compare 2 peak hours on the road: 6-7 and 17-18, during which the roads are most congested. The second peak hour has a large number of violations but hardly any injuries, while the first peak hour, with not so many violations, however a large number of personal injuries. The only variable between those two peak hours is daylight. Hence we can see that, violations at night, due to worse lighting conditions, are more easily to cause injuries.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div id="hypo4" style="width:100%; height:400px;"></div>
+                    <script type="text/javascript">
+                    $(function() {
                         // Build the chart
-                        $('#hypo3').highcharts({
+                        $('#hypo4').highcharts({
+                            chart: {
+                                type: 'area'
+                            },
+                            title: {
+                                text: 'Traffic Violations at Each Time Period'
+                            },
+                            subtitle: {
+                                text: 'Source: DataMontgomery',
+                            },
+                            credits: {
+                                enabled: false,
+                            },
+                            xAxis: {
+                                title: {
+                                    text: 'Time period'
+                                },
+                                categories: ['0-1', '1-2', '2-3', '3-4',
+                                    '4-5', '5-6', '6-7', '7-8',
+                                    '8-9', '9-10', '10-11', '11-12',
+                                    '12-13', '13-14', '14-15',
+                                    '15-16', '16-17', '17-18',
+                                    '18-19', '19-20', '20-21',
+                                    '21-22', '22-23', '23-0'
+                                ],
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Number of Violations'
+                                },
+                            },
+                            tooltip: {
+                                shared: true,
+                                crosshairs: true,
+                                pointFormat: '{series.name}: {point.y}<br>',
+                                positioner: function() {
+                                    return {
+                                        x: 120,
+                                        y: 80
+                                    };
+                                }
+                            },
+                            plotOptions: {
+
+                                area: {
+                                    marker: {
+                                        enabled: false,
+                                        symbol: 'circle',
+                                        states: {
+                                            hover: {
+                                                enabled: true
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: 'No personal injuries',
+                                data: [243, 149, 218, 129, 74, 36, 26, 45,
+                                    108, 131, 150, 139, 133, 113, 140,
+                                    128, 126, 158, 137, 107, 193, 194,
+                                    299, 338
+                                ]
+                            }, {
+                                name: 'Personal injuries involved',
+                                data: [0, 0, 0, 0, 10, 1, 7, 0, 5, 9, 0, 2,
+                                    0, 1, 0, 1, 0, 0, 0, 9, 0, 0, 9, 0
+                                ]
+                            }]
+                        })
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Hypothesis 5 -->
+    <div class="obs-container">
+        <div class="row hypo">
+            <h4>Hypothesis 5: Correlation between traffic violations 
+            and unfastened seat belts </h4>
+            <div class="hypo">
+                <div class="row">
+                    <p class="obs-text">
+                        <b>Hypothesis</b>: There is a correlation between traffic violations and unfastened seat belts.
+                        <br>
+                        <br>
+                        <b>Explantion</b>: People who violate traffic rules not because of not wearing seat belt, tend to have their seat belt unfastened as well. Note: this is not an analysis of relation between safety and seat belt, instead, we aim to find a corelation between 'not having the habbit of weaing seat belt' and 'breaking other traffic rules other than not wearing seat belts'.
+                        <br>
+                        <br>
+                        <b>Insight</b>: There are 3474 violation cases not caused by not wearing seat belt, it still contains 3381 cases without seat belt fastened. This means people not wearing their seat belts are more likely to break other traffic rules as well. People who have a good driving habit, fasten their seatbelts every time, probably are more likely to respect the traffic rules.
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" id="hypo51" style="width:50%; height:400px;"></div>
+                    <div class="col-md-6" id="hypo52" style="width:50%; height:400px;"></div>
+                    <script type="text/javascript">
+                    $(function() {
+                        $('#hypo51').highcharts({
                             chart: {
                                 type: 'pie',
-                                spacingBottom: 50
                             },
                             credits: {
                                 enabled: false,
                             },
                             title: {
-                                text: 'Genders of Traffic Violators'
+                                text: 'Violations(not caused by unfastened seatbelt) percentage with vs without Belt'
                             },
                             subtitle: {
                                 text: 'Source: DataMontgomery',
@@ -271,258 +396,78 @@ visualisation.
                                 }
                             },
                             legend: {
-                                  itemStyle: {
-                                  color: 'gray'
+                                itemStyle: {
+                                    color: 'gray'
                                 },
                             },
                             series: [{
                                 name: 'percentage',
                                 colorByPoint: true,
                                 data: [{
-                                    name: 'Female',
-                                    y: 1032
+                                    name: 'Wearing seatbelt',
+                                    y: 93
                                 }, {
-                                    name: 'Male',
-                                    y: 2532
-                                }, {
-                                    name: 'Unknown',
-                                    y: 4
+                                    name: 'Not wearing seatbelt',
+                                    y: 3381
                                 }]
                             }]
                         });
                     });
-                </script>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <!-- Hypothesis 4 -->
-    <div class="obs-container">
-        <div class="row hypo">
-            <h4>Hypothesis 4: Violations at night are more likely to lead to injuries</h4>
-            <div class="hypo">
-                <div class="col-md-6">
-                    <p class="obs-text"> 
-                        <b>Hypothesis</b>: Traffic violations at night are more 
-                        likely to cause personal injuries. <br><br>
-                        <b>Insight</b>: Bad lighting conditions at night could 
-                        affect drivers' sight, which leads to possible violations. 
-                        We can compare 2 peak hours on the road: 6-7 and 17-18, 
-                        during which the roads are most congested. The second peak 
-                        hour has a large number of violations but hardly any 
-                        injuries, while the first peak hour, with not so many 
-                        violations, however a large number of personal injuries. 
-                        The only variable between those two peak hours is daylight. 
-                        Hence we can see that, violations at night, due to worse 
-                        lighting conditions, are more easily to cause injuries.
-                     </p>
-                </div>
-                <div class="col-md-6">
-                    <div id="hypo4" style="width:100%; height:400px;"></div>
-                    <script type="text/javascript">
-                        $(function () {
-                            // Build the chart
-                            $('#hypo4').highcharts({
-                                chart: {
-                                    type: 'area'
+
+                    $(function() {
+                        $('#hypo52').highcharts({
+                            chart: {
+                                type: 'pie',
+                            },
+                            credits: {
+                                enabled: false,
+                            },
+                            title: {
+                                text: 'Violation Involving Personal Injuries Percentage with vs without Belt'
+                            },
+                            subtitle: {
+                                text: 'Source: DataMontgomery',
+                            },
+                            tooltip: {
+                                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                            },
+                            plotOptions: {
+                                pie: {
+                                    allowPointSelect: true,
+                                    cursor: 'pointer',
+                                    showInLegend: true
+                                }
+                            },
+                            legend: {
+                                itemStyle: {
+                                    color: 'gray'
                                 },
-                                title: {
-                                    text: 'Traffic Violations at Each Time Period'
-                                },
-                                subtitle: {
-                                    text: 'Source: DataMontgomery',
-                                },
-                                credits: {
-                                    enabled: false,
-                                }, 
-                                xAxis: {
-                                    title: {
-                                        text: 'Time period'
-                                    },
-                                    categories: ['0-1', '1-2', '2-3', '3-4', 
-                                                '4-5', '5-6', '6-7', '7-8', 
-                                                '8-9', '9-10', '10-11', '11-12', 
-                                                '12-13', '13-14', '14-15', 
-                                                '15-16', '16-17', '17-18', 
-                                                '18-19', '19-20', '20-21', 
-                                                '21-22', '22-23', '23-0'],
-                                },
-                                yAxis: {
-                                    title: {
-                                        text: 'Number of Violations'
-                                    },
-                                },
-                                tooltip: {
-                                    shared: true,
-                                    crosshairs: true,
-                                    pointFormat: '{series.name}: {point.y}<br>',
-                                    positioner: function () {
-                                        return { x: 120, y: 80 };
-                                    }
-                                },
-                                plotOptions: {
-                                   
-                                    area: {
-                                        marker: {
-                                            enabled: false,
-                                            symbol: 'circle',
-                                            states: {
-                                                hover: {
-                                                    enabled: true
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                series: [{
-                                    name: 'No personal injuries',
-                                    data: [243, 149, 218, 129, 74, 36, 26, 45, 
-                                            108, 131, 150, 139, 133, 113, 140, 
-                                            128, 126, 158, 137, 107, 193, 194, 
-                                            299, 338]
+                            },
+                            series: [{
+                                name: 'percentage',
+                                colorByPoint: true,
+                                data: [{
+                                    name: 'Wearing seatbelt',
+                                    y: 19
                                 }, {
-                                    name: 'Personal injuries involved',
-                                    data: [0, 0, 0, 0, 10, 1, 7, 0, 5, 9, 0, 2, 
-                                            0, 1, 0, 1, 0, 0, 0, 9, 0, 0, 9, 0]
+                                    name: 'Not Wearing seatbelt',
+                                    y: 35
                                 }]
-                            })
+                            }]
                         });
+                    });
                     </script>
                 </div>
             </div>
         </div>
     </div>
     <hr>
-    <!-- Hypothesis 5 -->
-    <div class="obs-container">
-        <div class="row hypo">
-            <h4>Hypothesis 5: Correlation between traffic violations 
-            and unfastened seat belts </h4>
-            <div class="hypo">
-                <div class="row">
-                    <p class="obs-text">
-                        <b>Hypothesis</b>: There is a correlation between 
-                        traffic violations and unfastened seat belts.<br><br>
-                        <b>Explantion</b>: People who violate traffic rules not 
-                        because of not wearing seat belt, tend to have their 
-                        seat belt unfastened as well. Note: this is not an 
-                        analysis of relation between safety and seat belt, 
-                        instead, we aim to find a corelation between 'not having 
-                        the habbit of weaing seat belt' and 'breaking other 
-                        traffic rules other than not wearing seat belts'.<br><br>
-                        <b>Insight</b>: There are 3474 violation cases not 
-                        caused by not wearing seat belt, it still contains 3381 
-                        cases without seat belt fastened. This means people not 
-                        wearing their seat belts are more likely to break other 
-                        traffic rules as well. People who have a good driving 
-                        habit, fasten their seatbelts every time, probably are 
-                        more likely to respect the traffic rules.
-                    </p>
-                </div>
-                <div class="row">
-                    <div class="col-md-6" id="hypo51" style="width:50%; height:400px;"></div>
-                    <div class="col-md-6" id="hypo52" style="width:50%; height:400px;"></div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#hypo51').highcharts({
-                                chart: {
-                                    type: 'pie',
-                                },
-                                credits: {
-                                    enabled: false,
-                                },
-                                title: {
-                                    text: 'Violations(not caused by unfastened seatbelt) percentage with vs without Belt'
-                                },
-                                subtitle: {
-                                    text: 'Source: DataMontgomery',
-                                },
-                                tooltip: {
-                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                                },
-                                plotOptions: {
-                                    pie: {
-                                        allowPointSelect: true,
-                                        cursor: 'pointer',
-                                        showInLegend: true
-                                    }
-                                },
-                                legend: {
-                                      itemStyle: {
-                                      color: 'gray'
-                                    },
-                                },
-                                series: [{
-                                    name: 'percentage',
-                                    colorByPoint: true,
-                                    data: [{
-                                        name: 'Wearing seatbelt',
-                                        y: 93
-                                    }, {
-                                        name: 'Not wearing seatbelt',
-                                        y: 3381
-                                    }]
-                                }]
-                            });
-                        });
-
-                        $(function () {
-                            $('#hypo52').highcharts({
-                                chart: {
-                                    type: 'pie',
-                                },
-                                credits: {
-                                    enabled: false,
-                                },
-                                title: {
-                                    text: 'Violation Involving Personal Injuries Percentage with vs without Belt'
-                                },
-                                subtitle: {
-                                    text: 'Source: DataMontgomery',
-                                },
-                                tooltip: {
-                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                                },
-                                plotOptions: {
-                                    pie: {
-                                        allowPointSelect: true,
-                                        cursor: 'pointer',
-                                        showInLegend: true
-                                    }
-                                },
-                                legend: {
-                                      itemStyle: {
-                                      color: 'gray'
-                                    },
-                                },
-                                series: [{
-                                    name: 'percentage',
-                                    colorByPoint: true,
-                                    data: [{
-                                        name: 'Wearing seatbelt',
-                                        y: 19
-                                    }, {
-                                        name: 'Not Wearing seatbelt',
-                                        y: 35
-                                    }]
-                                }]
-                            });
-                        });
-                    </script>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-
     <div class="row obs-container">
         <h4>Conclusion</h4>
         <p class="obs-text">
-            There are 5 hypothesis assumed, including relation between traffic violations and temperature, lighting condition, gender and seat belts, as well as the trend of violations number among the recent years.
-            Through deep analysis, we drew the following conclusions : there is no clear relation between violations and temperature, traffic violations tend to grows as the number of drivers increase over time, females violate traffic rules less than males, worse lighting conditions deteriorates the violations and wearing selt belt has a positive corelation with violating other traffic rules.
+            There are 5 hypothesis assumed, including relation between traffic violations and temperature, lighting condition, gender and seat belts, as well as the trend of violations number among the recent years. Through deep analysis, we drew the following conclusions : there is no clear relation between violations and temperature, traffic violations tend to grows as the number of drivers increase over time, females violate traffic rules less than males, worse lighting conditions deteriorates the violations and wearing selt belt has a positive corelation with violating other traffic rules.
         </p>
     </div>
-
 </body>
 
 </html>
