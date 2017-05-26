@@ -232,3 +232,13 @@ label {
 .intro-img {
     border-radius: 6px;
 }
+
+.footer {
+    height: 30px;
+    font-family: 'Muli';
+    text-align: center;
+    display: block;
+    color: white;
+    background-color: #337AB7;
+    padding: 0;
+}

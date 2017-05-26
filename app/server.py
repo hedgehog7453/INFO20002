@@ -65,9 +65,9 @@ def pivotTable():
 
     # String the indicates the requirement from the selection in pivot table builder
     if filter_val=="":
-        ptb_str = 'Filter attribute: ' + t2o2t(str(filter_a)) + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: none<br>'
+        ptb_str = 'With filter on: ' + t2o2t(str(filter_a)) + '; ' + 'Filter condition: ' + str(filter_cond) + '; ' + 'value: none<br>'
     else:
-        ptb_str = 'Filter attribute: ' + t2o2t(str(filter_a)) + '; ' + 'Filter method: ' + str(filter_cond) + '; ' + 'Filter value: ' + str(filter_val) + '<br>'
+        ptb_str = 'With filter on: ' + t2o2t(str(filter_a)) + '; ' + 'Filter condition: ' + str(filter_cond) + '; ' + 'value: ' + str(filter_val) + '<br>'
     
     # Build the pivot table
     pt = pivot_table_builder_func(str(row), str(col), aggr_m, str(aggr_a), filter_a, filter_cond, filter_val)
