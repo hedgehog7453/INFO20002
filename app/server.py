@@ -45,13 +45,16 @@ def pivotTableBuilder():
 @app.route("/pivotTable", methods=['GET', 'POST'])
 def pivotTable():
     # Acquire the data from pivot table builder page
-    row = request.form['row']
-    col = request.form['col']
-    aggr_m = request.form['aggregation_method']
-    aggr_a = request.form['aggregation_attr']
-    filter_a = request.form['filter_attr']
-    filter_cond = request.form['filter_cond']
-    filter_val = request.form['filter_val']
+    try:
+        row = request.form['row']
+        col = request.form['col']
+        aggr_m = request.form['aggregation_method']
+        aggr_a = request.form['aggregation_attr']
+        filter_a = request.form['filter_attr']
+        filter_cond = request.form['filter_cond']
+        filter_val = request.form['filter_val']
+    except:
+        return "Bad request. <br>Please click <a href='/pivotTableBuilder'>here</a> to build pivot table."
 
     # aggregation method dictionary (for displaing on the webpage)
     agg_d = {
