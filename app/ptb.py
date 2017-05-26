@@ -112,10 +112,10 @@ def pivot_table_builder_func(row, col, aggr_m, aggr_a, filter_attr, filter_cond,
 
 
 '''
-Takes all column values and aggregation values, return a html string
+Takes all column values and aggregation values, return two html strings for 
+tbody and color scale.
 '''
 def add_style(row, aggr):
-    tbody = ""
     # Find the maximum value and the minimum value (other than 0) from 
     # aggregation values
     max_val = 0
@@ -124,13 +124,15 @@ def add_style(row, aggr):
         for cell in r:
             if cell>max_val: max_val=cell
             if cell<min_val and cell!=0: min_val=cell
-    # Find the corresponding color for each cell
+    # rgb value for max and min value in aggregation values
     r_max = 227
     g_max = 74
     b_max = 51
     r_min = 254
     g_min = 232
     b_min = 200
+    # Find the corresponding color for each cell and generate string for tbody
+    tbody = ""
     for i in range(len(row)):
         tbody += "<tr><td>%s</td>"%str(row[i])
         for j in range(len(aggr[0])):
@@ -144,11 +146,12 @@ def add_style(row, aggr):
                 b = 255
             tbody += '<td style="background-color:rgb(%d,%d,%d);">%s</td>'%(r,g,b,str(val))
         tbody += "</tr>"
-        cs = '<tr>Color Scale</tr><tr>'
-        for i in range(0,11):
-            r = r_min-(i/10.0)*(r_min-r_max)
-            g = g_min-(i/10.0)*(g_min-g_max)
-            b = b_min-(i/10.0)*(b_min-b_max)
-            cs += '<td style="background-color:rgb(%d,%d,%d);color:rgb(%d,%d,%d);" class="cs-cell">hi</td>'%(r,g,b,r,g,b)
-        cs += "</tr><tr><td>min</td>"+"<td></td>"*9+"<td>max</td></tr>"
+    # Generate table for color scale
+    cs = '<tr>Color Scale</tr><tr>'
+    for i in range(0,11):
+        r = r_min-(i/10.0)*(r_min-r_max)
+        g = g_min-(i/10.0)*(g_min-g_max)
+        b = b_min-(i/10.0)*(b_min-b_max)
+        cs += '<td style="background-color:rgb(%d,%d,%d);color:rgb(%d,%d,%d);" class="cs-cell">hi</td>'%(r,g,b,r,g,b)
+    cs += "</tr><tr><td>min</td>"+"<td></td>"*9+"<td>max</td></tr>"
     return tbody, cs

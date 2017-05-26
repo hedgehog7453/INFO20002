@@ -186,12 +186,14 @@ label {
 }
 
 .color-scale {
+    font-family: 'Muli';
     width: 100%;
 }
 
 .cs-cell {
     width: 10vw;
 }
+
 
 /*******************************
 
