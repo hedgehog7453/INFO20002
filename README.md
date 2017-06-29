@@ -8,8 +8,8 @@ Group members: Jiayu Li, Yifan Wang, Chaoxin Wu
 ## To Run the Application
 
 To run this web app, please follow the instruction:
-1. Under the 'app' folder, run 'python server.py' in any command-line tool
-2. When server is setup, in a web browser (google chrome is prefered), go to the address 'http://localhost:5000/'
+1. Under the `app` folder, run `python server.py` in any command-line tool
+2. When server is setup, in a web browser (google chrome is prefered), go to the address `http://localhost:5000/`
 
 
 ## Application Structure
@@ -34,6 +34,7 @@ This page introduces 5 hypotheses based on the dataset and our observations afte
 ### Data Source
 
 Dataset source: DataMontgomery website
+
 https://data.montgomerycountymd.gov/Public-Safety/Traffic-Violations/4mse-ku6q
 
 Contains data from all states in the U.S. from 2012 till March 2017. 
