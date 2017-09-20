@@ -1,4 +1,4 @@
-# Traffic Violations in New York
+# Analysis of Traffic Violations in New York
 
 This is a group project of subject INFO20002 Foundations of Informatics at the University of Melbourne. 
 
@@ -7,26 +7,26 @@ Group members: Jiayu Li, Yifan Wang, Chaoxin Wu
 
 ## To Run the Application
 
-To run this web app, please follow the instruction:
-1. Under the `app` folder, run `python server.py` in any command-line tool
-2. When server is setup, in a web browser (google chrome is prefered), go to the address `http://localhost:5000/`
+Please follow the instructions to run this web application:
+1. In any command-line tool, cd to `app` folder and run `python server.py` to get the server ready
+2. When server is ready, in a web browser (google chrome is prefered), go to the address `http://localhost:5000/`
 
 
 ## Application Structure
 
-### Raw Data
+### Raw Data Page
 
-A bootstrap table that displays the raw dataset used for the project. It provides sorting, searching and pagination. 
+This page displays the raw dataset used for the project. It is built using bootstrap table and provides sorting, searching and pagination function. 
 
 
 ### Pivot Table Builder
 
-This page allows user to observe the data by building a pivot table. User needs to input row, column, aggregation attribute, aggregation method, and an optional filter (the attribute to filter on, filter condition, and filter value). It directs to the pivot table page after clicking "Create Pivot Table" button. 
+This page allows user to analyse the dataset by building a pivot table. User needs to input row, column, aggregation attribute, aggregation method, and an optional filter (the attribute to filter on, filter condition, and filter value). It directs to the pivot table page after clicking "Create Pivot Table" button. 
 
 
 ### Hypothesis and Observation
 
-This page introduces 5 hypotheses based on the dataset and our observations after visualising the data.
+This page introduces our five hypotheses based on the dataset and observations after visualising the data.
 
 
 ## Dataset
@@ -45,7 +45,7 @@ Rows: 1048576 Columns: 35
 
 ### Data Processing
 
-Some data in the dataset is removed for project purpose.
+The following modifications is made on the dataset for project purpose:
 1. We deleted all states except for NY
 2. We deleted the attributes that we're not interested in (e.g. agency, subagency)
 3. We deleted rows with invalid data (e.g. year '9999' and state '??')
