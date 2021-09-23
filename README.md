@@ -2,8 +2,19 @@
 
 This is a group project of subject INFO20002 Foundations of Informatics at the University of Melbourne. 
 
-Group members: Jiayu Li, Yifan Wang, Chaoxin Wu
-
+## Contributors
+<table>
+  <tr>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/12579999?v=4" alt="Jiayu Li" style="height: 100px; width:100px;"/></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/28029989?v=4" alt="Yifan Wang" style="height: 100px; width:100px; text-align: center;"/></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/17716775?v=4" alt="Chaoxin Wu" style="height: 100px; width:100px; text-align: center;"/></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/hedgehog7453">Jiayu Li<br>@hedgehog7453</a></td>
+    <td align="center"><a href="https://github.com/yifanw11">Yifan Wang<br>@yifanw11</a></td>
+    <td align="center"><a href="https://github.com/chaoxinw">Chaoxin Wu<br>@chaoxinw</a></td>
+  </tr>
+</table>
 
 ## To Run the Application
 
